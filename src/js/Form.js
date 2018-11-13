@@ -9,6 +9,11 @@ class Form extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  async componentDidMount() {
+    const response = await fetch('/app/greeting');
+    console.log(response);
+  }
+
   handleChange(event) {
     this.setState({value: event.target.value});
   }
