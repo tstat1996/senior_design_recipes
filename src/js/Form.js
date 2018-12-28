@@ -7,6 +7,7 @@ class Form extends Component {
     this.state = {
         courses: 'CIS 110',
         difficulty: '3',
+        mounted: false,
         quality: '3',
         recs: [],
     };
@@ -18,12 +19,8 @@ class Form extends Component {
     this.renderRecs = this.renderRecs.bind(this);
   }
 
-  async componentDidMount() {
-    const response = await fetch('http://localhost:8080/request');
-    response.json()
-    .then(data => {
-      this.setState({ recs: data });
-    });
+  componentDidMount() {
+    this.setState({ mounted: true });
   }
 
   handleCourseChange(event) {
@@ -38,10 +35,16 @@ class Form extends Component {
     this.setState({quality: event.target.value});
   }
 
-   handleSubmit(event) {
-      event.preventDefault();
-      // get form params
-    }
+  async handleSubmit(event) {
+    event.preventDefault();
+    const { courses, difficulty, quality } = this.state;
+    const url = `http://localhost:8080/request/?courses=${courses}&diff=${difficulty}&courseQual=${quality}`;
+    const response = await fetch(url);
+      response.json()
+      .then(data => {
+        this.setState({ recs: data });
+      });
+  }
 
   renderRecs() {
     const { recs } = this.state;
@@ -49,14 +52,35 @@ class Form extends Component {
         return null;
     }
     return (
-        <div>
-            <p> Here are some courses you might enjoy! </p>
-            {recs.map(rec => <p> {rec.code} : {rec.name} </p>)}
-        </div>
+      <div className="table">
+        <p> Here are some courses you might enjoy! </p>
+        <table>
+          <tr>
+            <th>Course Code</th>
+            <th>Course Name</th>
+            <th>Course Quality</th>
+            <th>Course Difficulty</th>
+            <th>Professor Quality</th>
+            <th>Course Description</th>
+          </tr>
+            {recs.map(rec =>
+              <tr>
+                <td>{rec.code}</td>
+                <td>{rec.name}</td>
+                <td>{rec.courseQuality}</td>
+                <td>{rec.courseDifficulty}</td>
+                <td>{rec.profQuality}</td>
+                <td>{rec.description}</td>
+              </tr>
+            )}
+        </table>
+      </div>
     );
   }
 
   render() {
+    const { mounted } = this.state;
+    if (!mounted) return null;
     const recs = this.renderRecs();
     return (
         <div>
@@ -66,7 +90,7 @@ class Form extends Component {
               <input type="text" value={this.state.courses} onChange={this.handleCourseChange} />
             </div>
             <div className="row">
-              <label> Difficulty </label>
+              <label> Course Difficulty </label>
               <select value={this.state.difficulty} onChange={this.handleDifficultyChange}>
                 <option value="1">0-1</option>
                 <option value="2">1-2</option>
@@ -75,7 +99,7 @@ class Form extends Component {
               </select>
             </div>
             <div className="row">
-              <label> Quality </label>
+              <label> Course Quality </label>
               <select value={this.state.quality} onChange={this.handleQualityChange}>
                   <option value="1">0-1</option>
                   <option value="2">1-2</option>
@@ -83,7 +107,7 @@ class Form extends Component {
                   <option value="4">3-4</option>
                 </select>
             </div>
-            <input className="button" type="submit" value="Submit" />
+            <input type="submit" value="Submit" />
           </form>
           {recs}
         </div>

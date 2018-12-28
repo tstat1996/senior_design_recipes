@@ -30,8 +30,10 @@ public class Controller {
                                         @RequestParam(value = "diff", defaultValue = "4") String diff,
                                         @RequestParam(value = "courseQual", defaultValue = "4") String courseQual) {
         List<Recommendation> recs = new ArrayList<Recommendation>();
-        Recommendation rec = new Recommendation("Programming", "CIS 110", 2.0, 3.3, 2.7, "Java basics");
-        recs.add(rec);
+        Recommendation rec1 = new Recommendation("Algos with Rajiv", "CIS 121", 3.5, 3.6, 3.8, "Algorithms in Java");
+        Recommendation rec2 = new Recommendation("Code with Swap", "CIS 120", 2.0, 3.3, 3.5, "Java and OCaml");
+        recs.add(rec1);
+        recs.add(rec2);
         return recs;
     }
 

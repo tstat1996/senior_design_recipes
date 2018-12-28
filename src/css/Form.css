@@ -1,3 +1,32 @@
-.button {
-  font-size: 16pt;
+input {
+  font-size: 12pt;
+  height: 20px;
+}
+
+label {
+  padding-right: 8px;
+}
+
+.row {
+  font-size: 14pt;
+  padding-top: 8px;
+}
+
+select {
+  font-size: 12pt;
+  height: 20px;
+}
+
+.table {
+  font-size: 12pt;
+}
+
+th {
+  height: 50px;
+}
+
+td {
+  height: 30px;
+  text-align: center;
+  width: 120px;
 }
