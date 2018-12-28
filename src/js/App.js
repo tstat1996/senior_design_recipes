@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className="homepage">
         <p>
-          Welcome to Penn Course Recs
+          Welcome to Penn Course Recs!
         </p>
         <Form />
       </div>

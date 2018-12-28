@@ -59,17 +59,14 @@ public class APIData {
 				con.setRequestMethod("GET");
 				con.setRequestProperty("Accept", "application/json");
 				BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
-				// br.
 				String output;
 				StringBuilder sb = new StringBuilder();
 				while ((output = br.readLine()) != null) {
-					// System.out.println(output);
 					sb.append(output);
 				}
 				JSONParser parser = new JSONParser();
-				// System.out.println(sb.toString());
 				JSONObject json = (JSONObject) parser.parse(sb.toString());
-				//
+
 				JSONObject result = (JSONObject) json.get("result");
 				JSONArray values = (JSONArray) result.get("depts");
 				if (values != null) {
@@ -90,10 +87,6 @@ public class APIData {
 
 				e.printStackTrace();
 			}
-			// } catch (ParseException e) {
-			// // TODO Auto-generated catch block
-			// e.printStackTrace();
-			// }
 			catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -111,16 +104,12 @@ public class APIData {
 			con.setRequestMethod("GET");
 			con.setRequestProperty("Accept", "application/json");
 			BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
-			// br.
 			String output;
 			StringBuilder sb = new StringBuilder();
 			while ((output = br.readLine()) != null) {
-				// addCourse(output);
-				// System.out.println(output);
 				sb.append(output);
 			}
 			JSONParser parser = new JSONParser();
-			// System.out.println(sb.toString());
 			JSONObject json = (JSONObject) parser.parse(sb.toString());
 			JSONObject result = (JSONObject) json.get("result");
 			String description = (String) result.get("description");
@@ -152,17 +141,14 @@ public class APIData {
 				String alias = iterator.next();
 				vertex.addAlias(alias);
 			}
-			// System.out.println(vertex.getAliases());
 			String description = getCourseDescription(id.toString());
 			
 			vertex.setDescription(description);
 			if (!allCourses.contains(vertex)) {
-				System.out.println(vertex.toString());
+				//System.out.println(vertex.toString());
 				allCourses.add(vertex);
 			}
 		}
-
-		/// courses/24160
 
 	}
 
@@ -170,23 +156,18 @@ public class APIData {
 		Set<String> depts = getDepts();
 		URL url2;
 		for (String dept : depts) {
-			/// semesters/:semester/:dept
 			try {
 				url2 = new URL(baseUrl + dept + "/" + token);
 				HttpURLConnection con = (HttpURLConnection) url2.openConnection();
 				con.setRequestMethod("GET");
 				con.setRequestProperty("Accept", "application/json");
 				BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
-				// br.
 				String output;
 				StringBuilder sb = new StringBuilder();
 				while ((output = br.readLine()) != null) {
-					// addCourse(output);
-					// System.out.println(output);
 					sb.append(output);
 				}
 				JSONParser parser = new JSONParser();
-				// System.out.println(sb.toString());
 				JSONObject json = (JSONObject) parser.parse(sb.toString());
 				JSONObject result = (JSONObject) json.get("result");
 				JSONArray courses = (JSONArray) result.get("courses");
@@ -194,9 +175,7 @@ public class APIData {
 					Iterator<JSONObject> iterator = courses.iterator();
 					while (iterator.hasNext()) {
 						JSONObject course = iterator.next();
-						// System.out.println(course);
 						addCourse(course);
-						// depts.add(semPath);
 					}
 				}
 
@@ -209,5 +188,9 @@ public class APIData {
 		}
 		return null;
 	}
+
+	public Set<Vertex> getAllCourses(){
+	    return allCourses;
+    }
 
 }
