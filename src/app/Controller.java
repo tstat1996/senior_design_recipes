@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,16 +25,14 @@ public class Controller {
     }
 
     @RequestMapping("/request")
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<Recommendation> request(@RequestParam(value="courses", defaultValue = "") String courses,
                                         @RequestParam(value = "diff", defaultValue = "4") String diff,
                                         @RequestParam(value = "courseQual", defaultValue = "4") String courseQual) {
-        return new ArrayList<>();
-    }
-
-    @RequestMapping("/lol")
-    @CrossOrigin(origins = "http://localhost:3000")
-    public Recommendation rec() {
-        return new Recommendation("Sam", "Sam", 0, 0, 0, "SAm");
+        List<Recommendation> recs = new ArrayList<Recommendation>();
+        Recommendation rec = new Recommendation("Programming", "CIS 110", 2.0, 3.3, 2.7, "Java basics");
+        recs.add(rec);
+        return recs;
     }
 
     @Bean

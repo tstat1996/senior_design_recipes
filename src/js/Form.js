@@ -19,8 +19,11 @@ class Form extends Component {
   }
 
   async componentDidMount() {
-    const response = fetch('http://localhost:8080/lol');
-    console.log(response.json);
+    const response = await fetch('http://localhost:8080/request');
+    response.json()
+    .then(data => {
+      this.setState({ recs: data });
+    });
   }
 
   handleCourseChange(event) {
@@ -37,23 +40,8 @@ class Form extends Component {
 
    handleSubmit(event) {
       event.preventDefault();
-      const Http = new XMLHttpRequest();
-      const url = 'http://localhost:8080/lol';
-      Http.open("GET", url);
-      Http.send();
-      Http.onreadystatechange = (e) => {
-        console.log(Http.responseText);
-      }
+      // get form params
     }
-
-  /* handleSubmit(event) {
-    event.preventDefault();
-    console.log(this.state);
-    // call API
-    // show response
-    const response = ["CIS 120", "CIS 121"];
-    this.setState({ recs: response });
-  }
 
   renderRecs() {
     const { recs } = this.state;
@@ -63,10 +51,10 @@ class Form extends Component {
     return (
         <div>
             <p> Here are some courses you might enjoy! </p>
-            {recs.map(rec => <p> {rec} </p>)}
+            {recs.map(rec => <p> {rec.code} : {rec.name} </p>)}
         </div>
     );
-  } */
+  }
 
   render() {
     const recs = this.renderRecs();
