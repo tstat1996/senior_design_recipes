@@ -10,17 +10,24 @@ class Form extends Component {
   }
 
   async componentDidMount() {
-    const response = await fetch('/app/greeting');
-    console.log(response);
+    const response = fetch('http://localhost:8080/lol');
+    console.log(response.json);
   }
 
   handleChange(event) {
     this.setState({value: event.target.value});
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-  }
+   handleSubmit(event) {
+      event.preventDefault();
+      const Http = new XMLHttpRequest();
+      const url = 'http://localhost:8080/lol';
+      Http.open("GET", url);
+      Http.send();
+      Http.onreadystatechange = (e) => {
+        console.log(Http.responseText);
+      }
+    }
 
   render() {
     return (
