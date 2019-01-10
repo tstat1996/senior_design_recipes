@@ -43,7 +43,6 @@ public class APIData {
 
 		}
 		System.out.println(semesters);
-
 		return semesters;
 	}
 
@@ -54,7 +53,8 @@ public class APIData {
 		for (String semester : semesters) {
 			try {
 
-				url = new URL(baseUrl + "/v1/semesters/" + semester + "/" + token);
+				url = new URL(baseUrl + "/semesters/" + semester + "/" + token);
+
 				HttpURLConnection con = (HttpURLConnection) url.openConnection();
 				con.setRequestMethod("GET");
 				con.setRequestProperty("Accept", "application/json");
@@ -99,7 +99,7 @@ public class APIData {
 	public String getCourseDescription(String id) {
 		URL url;
 		try {
-			url = new URL(baseUrl + "/v1/courses/" + id + "/" + token);
+			url = new URL(baseUrl + "/courses/" + id + "/" + token);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setRequestMethod("GET");
 			con.setRequestProperty("Accept", "application/json");

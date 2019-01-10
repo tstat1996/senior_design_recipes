@@ -8,7 +8,7 @@ import java.net.URL;
 
 public class Data {
 	public static String token = "?token=auUBPUTtr7CGev0K63JjmHQAAGplzx";
-	public static String baseUrl = "https://api.penncoursereview.com";
+	public static String baseUrl = "http://api.penncoursereview.com";
 
 	public String getCourseDescription(String id) throws IOException {
 		URL url = new URL(baseUrl +id + token);
