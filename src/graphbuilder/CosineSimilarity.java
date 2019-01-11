@@ -34,7 +34,6 @@ public class CosineSimilarity {
     private void createTfIdfWeights() {
         System.out.println("Creating the tf-idf weight vectors");
         Set<String> terms = graph.getInvertedIndex().keySet();
-
         for (Vertex vertex : graph.getDocuments()) {
             HashMap<String, Double> weights = new HashMap<String, Double>();
 

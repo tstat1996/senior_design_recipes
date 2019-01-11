@@ -47,6 +47,7 @@ public class APIData {
 	}
 
 	public Set<String> getDepts() {
+		System.out.println("getting departments");
 		Set<String> semesters = getSemesters();
 		Set<String> depts = new HashSet<String>();
 		URL url;
@@ -93,6 +94,8 @@ public class APIData {
 			}
 
 		}
+		//depts.add("/semesters/2017A/CIS");
+		//System.out.println(depts);
 		return depts;
 	}
 
@@ -154,6 +157,7 @@ public class APIData {
 
 	public Set<String> getCoursesForDept() {
 		Set<String> depts = getDepts();
+		System.out.println("got departments");
 		URL url2;
 		for (String dept : depts) {
 			try {

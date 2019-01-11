@@ -2,7 +2,7 @@ package graphbuilder;
 
 import java.util.*;
 
-public class Vertex {
+public class Vertex implements Comparable{
 	
 	private String name;
 	private String number;
@@ -61,12 +61,15 @@ public class Vertex {
 
         String[] words = this.description.split(" ");
         for(String word : words) {
-            String removePunctuation = word.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
-            if (termFrequency.containsKey(word)) {
-                int initialCount = termFrequency.get(word);
-                termFrequency.put(word, initialCount + 1);
+			String removePunctuation = word.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
+			if(removePunctuation.equals("")){
+				continue;
+			}
+			if (termFrequency.containsKey(removePunctuation)) {
+                int initialCount = termFrequency.get(removePunctuation);
+                termFrequency.put(removePunctuation, initialCount + 1);
             } else {
-                termFrequency.put(word, 1);
+                termFrequency.put(removePunctuation, 1);
             }
         }
 	}
@@ -79,7 +82,8 @@ public class Vertex {
     }
 
     public Set<String> getTermList(){
-	    return termFrequency.keySet();
+	    computeTf();
+		return termFrequency.keySet();
     }
 
     public void addEdge(Vertex v, double cs){
@@ -93,5 +97,13 @@ public class Vertex {
     public boolean descriptionEquals(Vertex v){
 	    return this.description.equals(v.description);
     }
+
+	@Override
+	public int compareTo(Object o) {
+		//System.out.println(o);
+		Vertex v = (Vertex) o;
+
+		return this.name.compareTo(v.name);
+	}
 }
 

@@ -30,6 +30,7 @@ public class Data {
 //		APIData d = new APIData();
 //		d.getCoursesForDept();
 		Graph g = new Graph();
+		System.out.println("adding edges now");
 		g.addEdges();
 
 

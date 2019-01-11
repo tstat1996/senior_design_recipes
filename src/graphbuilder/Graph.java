@@ -11,6 +11,7 @@ public class Graph {
     public Graph(){
         APIData x = new APIData();
         x.getCoursesForDept();
+        System.out.println("got courses");
         allCourses = x.getAllCourses();
         invertedIndex = new HashMap<String, Set<Vertex>>();
 
@@ -18,10 +19,9 @@ public class Graph {
     }
 
     private void createInvertedIndex() {
-
+        System.out.println("creating inverted index");
         for (Vertex course : allCourses) {
             Set<String> terms = course.getTermList();
-
             for (String term : terms) {
                 if (invertedIndex.containsKey(term)) {
                     Set<Vertex> list = invertedIndex.get(term);
@@ -60,22 +60,27 @@ public class Graph {
     }
 
     public void addEdges(){
+        System.out.println("adding edges");
         CosineSimilarity cs = new CosineSimilarity(this);
         List<Vertex> arrayCourses = new ArrayList(allCourses);
         for(int i = 0; i < arrayCourses.size()-1; i++){
-            for(int j = i+1; i < arrayCourses.size(); j++){
+            for(int j = i+1; j < arrayCourses.size(); j++){
                 Vertex v1 = arrayCourses.get(i);
                 Vertex v2 = arrayCourses.get(j);
                 if(!v1.descriptionEquals(v2)){
                     double similarity = cs.cosineSimilarity(v1, v2);
-                    if(similarity >= .2){
+                    if(similarity >= .1){
                         v1.addEdge(v2, similarity);
                         v2.addEdge(v1, similarity);
-                        System.out.println(v1.toString());
                     }
                 }
             }
         }
+        //Debug;
+        System.out.println("done");
+        System.out.println("done");
+        System.out.println(arrayCourses.get(5).getEdgeList());
+
     }
 
 
