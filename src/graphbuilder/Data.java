@@ -1,10 +1,9 @@
 package graphbuilder;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashSet;
 
 public class Data {
 	public static String token = "?token=auUBPUTtr7CGev0K63JjmHQAAGplzx";
@@ -26,13 +25,33 @@ public class Data {
 		return "";
 	}
 
+	public static void makeNodeTextFiles(Graph g) {
+		Writer writer = null;
+		try {
+			writer = new BufferedWriter(new OutputStreamWriter(
+					new FileOutputStream("allNodes.txt"), "utf-8"));
+			HashSet<String> idList = new HashSet<>();
+			for(Vertex v: g.getDocuments()) {
+				if (!idList.contains(v.getId())) {
+					writer.write(v.toGraphString() + '\n');
+				}
+				idList.add(v.getId());
+
+			}
+
+		} catch (IOException ex) {
+			// Report
+		} finally {
+			try {writer.close();} catch (Exception ex) {/*ignore*/}
+		}
+	}
+
 	public static void main(String[] args)  {
 //		APIData d = new APIData();
 //		d.getCoursesForDept();
 		Graph g = new Graph();
-		System.out.println("adding edges now");
-		g.addEdges();
-
+		makeNodeTextFiles(g);
+//		g.addEdges();
 
 	}
 

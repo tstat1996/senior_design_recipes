@@ -1,0 +1,5 @@
+1) Start a local neo4j instance
+2) Copy and paste the following line in the terminal: CREATE CONSTRAINT ON (c:Course) ASSERT c.id IS UNIQUE;
+3) Add all of the nodeText files to the graph by copy and pasting their contents into the terminal and running each time
+
+*** gsplit -l 1000 -d --additional-suffix=.txt $path_to_allNodes.txt nodeText
