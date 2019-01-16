@@ -51,16 +51,16 @@ public class Data {
 //		d.getCoursesForDept();
 		Graph g = new Graph();
 		makeNodeTextFiles(g);
-//		System.out.println("starting edges");
-//		g.addEdges();
-//		HashSet<String> idList = new HashSet<>();
-//		for(Vertex v: g.getDocuments()) {
-//			if (!idList.contains(v.getId())) {
-//				System.out.println(v.toEdgeString() + '\n' + "NEW VERTEX:");
-//			}
-//			idList.add(v.getId());
-//
-//		}
+		System.out.println("starting edges");
+		g.addEdges();
+		HashSet<String> idList = new HashSet<>();
+		for(Vertex v: g.getDocuments()) {
+			if (!idList.contains(v.getId())) {
+				System.out.println(v.toEdgeString() + '\n' + "NEW VERTEX:");
+			}
+			idList.add(v.getId());
+
+		}
 
 	}
 
