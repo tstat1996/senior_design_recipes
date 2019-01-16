@@ -1,8 +1,10 @@
 package graphbuilder;
 
+import javafx.beans.binding.StringBinding;
+
 import java.util.*;
 
-public class Vertex implements Comparator<Vertex> {
+public class Vertex implements Comparator<Vertex>, Comparable {
 
 	private String name;
 	private String number;
@@ -114,6 +116,22 @@ public class Vertex implements Comparator<Vertex> {
 				"courseQuality:\"" + this.courseQuality + "\", " +
 				"professorQuality:\"" + this.professorQuality + "\", " +
 				"difficulty:\"" + this.difficulty + "\"})";
+	}
+
+	public String toEdgeString() {
+		StringBuilder sb = new StringBuilder();
+		for(Vertex v: edgeList.keySet()) {
+			sb.append("Name:" + v.name + " id: " + v.getId() + " weight: " + edgeList.get(v) + "\n");
+		}
+		return sb.toString();
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		//System.out.println(o);
+		Vertex v = (Vertex) o;
+
+		return this.name.compareTo(v.name);
 	}
 
 	@Override

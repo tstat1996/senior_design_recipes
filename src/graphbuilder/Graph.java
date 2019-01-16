@@ -62,6 +62,7 @@ public class Graph {
     public void addEdges(){
         System.out.println("adding edges");
         CosineSimilarity cs = new CosineSimilarity(this);
+        System.out.println("finished cosine similarity constructor");
         List<Vertex> arrayCourses = new ArrayList(allCourses);
         for(int i = 0; i < arrayCourses.size()-1; i++){
             for(int j = i+1; j < arrayCourses.size(); j++){
