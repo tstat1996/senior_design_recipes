@@ -3,17 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4bcc08f8-70c5-449a-bbc9-fa1e5a03f3be" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nodeText01.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nodeText01.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nodeText02.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nodeText02.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nodeText03.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nodeText03.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nodeText04.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nodeText04.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nodeText05.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nodeText05.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nodeText06.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nodeText06.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nodeText07.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nodeText07.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nodeText08.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nodeText08.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nodeText09.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nodeText09.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nodeText10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nodeText10.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphbuilder/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphbuilder/Data.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphbuilder/APIData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphbuilder/APIData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphbuilder/CosineSimilarity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphbuilder/CosineSimilarity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphbuilder/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphbuilder/Graph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphbuilder/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphbuilder/Vertex.java" afterDir="false" />
     </list>
@@ -56,34 +47,37 @@
     <session id="2105625888">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
-          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.12" value="2" />
+          <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.22" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="11" />
+          <entry key="java" value="17" />
+          <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="11" />
+          <entry key="JAVA" value="17" />
+          <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="929" />
+          <entry key="java" value="3920" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="929" />
+          <entry key="JAVA" value="3920" />
         </counts>
       </usages-collector>
     </session>
@@ -119,23 +113,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/graphbuilder/APIData.java">
+        <entry file="file://$PROJECT_DIR$/src/graphbuilder/GenerateCsv.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1004">
-              <caret line="62" column="12" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="12" />
+            <state relative-caret-position="215">
+              <caret line="46" column="27" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="46" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1314#1322#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/graphbuilder/ClassBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -143,17 +127,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/graphbuilder/CosineSimilarity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-340">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="156">
+              <caret line="37" column="56" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
+              <folding>
+                <element signature="e#1054#1062#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common_words.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="199" column="6" selection-start-line="199" selection-start-column="6" selection-end-line="199" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/graphbuilder/Data.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
+            <state relative-caret-position="720">
+              <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -161,10 +157,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/graphbuilder/Graph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
+            <state relative-caret-position="-625">
+              <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/graphbuilder/GenerateEdges.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="281">
               <caret line="23" selection-start-line="23" selection-end-line="23" />
               <folding>
-                <element signature="e#885#893#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -173,12 +178,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/graphbuilder/Vertex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="912">
-              <caret line="134" column="5" selection-start-line="134" selection-start-column="5" selection-end-line="134" selection-end-column="5" />
+            <state relative-caret-position="-153">
+              <caret line="75" selection-start-line="75" selection-end-line="75" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2119#2120#0" expanded="true" />
-                <element signature="e#2171#2172#0" expanded="true" />
+                <element signature="e#1060#1061#0" expanded="true" />
+                <element signature="e#1083#1084#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -223,11 +227,14 @@
         <option value="$PROJECT_DIR$/src/app/Recommendations.java" />
         <option value="$PROJECT_DIR$/src/app/Recommendation.java" />
         <option value="$PROJECT_DIR$/src/app/Controller.java" />
-        <option value="$PROJECT_DIR$/src/graphbuilder/APIData.java" />
-        <option value="$PROJECT_DIR$/src/graphbuilder/CosineSimilarity.java" />
         <option value="$PROJECT_DIR$/src/graphbuilder/Data.java" />
-        <option value="$PROJECT_DIR$/src/graphbuilder/Graph.java" />
         <option value="$PROJECT_DIR$/src/graphbuilder/Vertex.java" />
+        <option value="$PROJECT_DIR$/src/graphbuilder/GenerateCsv.java" />
+        <option value="$PROJECT_DIR$/src/graphbuilder/APIData.java" />
+        <option value="$PROJECT_DIR$/src/graphbuilder/Graph.java" />
+        <option value="$PROJECT_DIR$/common_words.txt" />
+        <option value="$PROJECT_DIR$/src/graphbuilder/CosineSimilarity.java" />
+        <option value="$PROJECT_DIR$/src/graphbuilder/GenerateEdges.java" />
       </list>
     </option>
   </component>
@@ -256,16 +263,27 @@
               <item name="penn_course_recs" type="b2602c69:ProjectViewProjectNode" />
               <item name="penn_course_recs" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="penn_course_recs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="penn_course_recs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="penn_course_recs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="penn_course_recs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="graphbuilder" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547222312580" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547826320506" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -283,7 +301,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Data">
+  <component name="RunManager" selected="Application.GenerateEdges">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -334,6 +352,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="GenerateCsv" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphbuilder.GenerateCsv" />
+      <module name="penn_course_recs" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="graphbuilder.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GenerateEdges" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphbuilder.GenerateEdges" />
+      <module name="penn_course_recs" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="graphbuilder.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -369,9 +415,13 @@
       <item itemvalue="Application.Application" />
       <item itemvalue="Application.Application (1)" />
       <item itemvalue="Application.Data" />
+      <item itemvalue="Application.GenerateCsv" />
+      <item itemvalue="Application.GenerateEdges" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GenerateEdges" />
+        <item itemvalue="Application.GenerateCsv" />
         <item itemvalue="Application.Data" />
         <item itemvalue="Application.Application (1)" />
         <item itemvalue="Application.Application" />
@@ -396,8 +446,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="36" y="23" width="1162" height="777" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28392857" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29375" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -406,7 +457,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32846716" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32846716" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -483,13 +534,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/graphbuilder/CosineSimilarity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-340">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/graphbuilder/ClassBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -497,43 +541,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphbuilder/Data.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/graphbuilder/APIData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1004">
-          <caret line="62" column="12" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="12" />
+        <state relative-caret-position="-123">
+          <caret line="53" column="43" lean-forward="true" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1314#1322#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphbuilder/GenerateCsv.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="46" column="27" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="46" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/graphbuilder/Vertex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="134" column="5" selection-start-line="134" selection-start-column="5" selection-end-line="134" selection-end-column="5" />
+        <state relative-caret-position="-153">
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2119#2120#0" expanded="true" />
-            <element signature="e#2171#2172#0" expanded="true" />
+            <element signature="e#1060#1061#0" expanded="true" />
+            <element signature="e#1083#1084#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common_words.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="199" column="6" selection-start-line="199" selection-start-column="6" selection-end-line="199" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/graphbuilder/Graph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="-625">
+          <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphbuilder/CosineSimilarity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="37" column="56" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
           <folding>
-            <element signature="e#885#893#0" expanded="true" />
+            <element signature="e#1054#1062#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/graphbuilder/Data.java">
+    <entry file="file://$PROJECT_DIR$/src/graphbuilder/GenerateEdges.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
+        <state relative-caret-position="281">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

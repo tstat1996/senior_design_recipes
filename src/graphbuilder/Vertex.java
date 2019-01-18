@@ -46,6 +46,46 @@ public class Vertex implements Comparator<Vertex>, Comparable {
 
 	}
 
+	public String getName(){
+		return this.name;
+	}
+
+	public String getNumber(){
+		return this.number;
+	}
+
+	public String getPath(){
+		return this.path;
+	}
+
+	public String getDescription(){
+		return this.description;
+	}
+
+	public double getCourseQuality(){
+		return this.courseQuality;
+	}
+
+	public void setCourseQuality(double qual){
+	    this.courseQuality = qual;
+    }
+
+	public double getProfessorQuality(){
+		return this.professorQuality;
+	}
+
+    public void setProfessorQuality(double qual){
+        this.professorQuality = qual;
+    }
+
+	public double getDifficulty(){
+		return this.difficulty;
+	}
+
+    public void setDifficulty(double diff){
+        this.difficulty = diff;
+    }
+
 	public boolean firstAlias(){
 		return number == null;
 	}

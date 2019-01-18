@@ -87,6 +87,8 @@ public class APIData {
 				// TODO Auto-generated catch block
 
 				e.printStackTrace();
+				continue;
+
 			}
 			catch (ParseException e) {
 				// TODO Auto-generated catch block

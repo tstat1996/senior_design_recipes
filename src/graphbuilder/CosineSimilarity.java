@@ -1,8 +1,10 @@
 package graphbuilder;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
 public class CosineSimilarity {
 
@@ -28,16 +30,38 @@ public class CosineSimilarity {
         createTfIdfWeights();
     }
 
+    private Set<String> commonWords(){
+        BufferedReader reader = null;
+        Set<String> commonWords = new HashSet<String>();
+
+        try {
+            reader = new BufferedReader(new FileReader("common_words.txt"));
+            String line = reader.readLine();
+            while(line!= null) {
+                commonWords.add(line.trim());
+                line = reader.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return commonWords;
+    }
+
     /**
      * This creates the tf-idf vectors.
      */
     private void createTfIdfWeights() {
         System.out.println("Creating the tf-idf weight vectors");
         Set<String> terms = graph.getInvertedIndex().keySet();
+        Set<String> commonWords = commonWords();
+        HashMap<String, Double> weights;
         for (Vertex vertex : graph.getDocuments()) {
-            HashMap<String, Double> weights = new HashMap<String, Double>();
+            weights = new HashMap<String, Double>();
 
             for (String term : terms) {
+                if(commonWords.contains(term)){
+                    continue;
+                }
                 double tf = vertex.getTermFrequency(term);
                 double idf = graph.getInverseDocumentFrequency(term);
 

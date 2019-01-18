@@ -18,6 +18,13 @@ public class Graph {
         createInvertedIndex();
     }
 
+    public Graph(Set<Vertex> allCourses){
+        this.allCourses = allCourses;
+        invertedIndex = new HashMap<String, Set<Vertex>>();
+
+        createInvertedIndex();
+    }
+
     private void createInvertedIndex() {
         System.out.println("creating inverted index");
         for (Vertex course : allCourses) {
@@ -58,6 +65,8 @@ public class Graph {
     public Map<String, Set<Vertex>> getInvertedIndex() {
         return invertedIndex;
     }
+
+
 
     public void addEdges(){
         System.out.println("adding edges");
