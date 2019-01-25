@@ -25,32 +25,11 @@ public class Data {
 		return "";
 	}
 
-	public static void makeNodeTextFiles(Graph g) {
-		Writer writer = null;
-		try {
-			writer = new BufferedWriter(new OutputStreamWriter(
-					new FileOutputStream("allNodes.txt"), "utf-8"));
-			HashSet<String> idList = new HashSet<>();
-			for(Vertex v: g.getDocuments()) {
-				if (!idList.contains(v.getId())) {
-					writer.write(v.toGraphString() + '\n');
-				}
-				idList.add(v.getId());
-
-			}
-
-		} catch (IOException ex) {
-			// Report
-		} finally {
-			try {writer.close();} catch (Exception ex) {/*ignore*/}
-		}
-	}
 
 	public static void main(String[] args)  {
 //		APIData d = new APIData();
 //		d.getCoursesForDept();
 		Graph g = new Graph();
-		makeNodeTextFiles(g);
 		System.out.println("starting edges");
 		g.addEdges();
 		HashSet<String> idList = new HashSet<>();

@@ -2,11 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4bcc08f8-70c5-449a-bbc9-fa1e5a03f3be" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_opencsv_opencsv_4_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_text_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/penn_course_recs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/penn_course_recs.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphbuilder/APIData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphbuilder/APIData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphbuilder/CosineSimilarity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphbuilder/CosineSimilarity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allNodes.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/edges.txt" beforeDir="false" afterPath="$PROJECT_DIR$/edges.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neo4jEdges.csv" beforeDir="false" afterPath="$PROJECT_DIR$/neo4jEdges.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodeCreationInstructions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nodeCreationInstructions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphbuilder/CreateNeo4jEdges.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphbuilder/CreateNeo4jEdges.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphbuilder/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphbuilder/Data.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphbuilder/FilterNodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphbuilder/CreateNeo4jNodes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphbuilder/GenerateCsv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphbuilder/GenerateNodes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphbuilder/GenerateEdges.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphbuilder/GenerateEdges.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphbuilder/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphbuilder/Graph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphbuilder/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphbuilder/Vertex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniqueNodes.csv" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -109,65 +127,90 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-63519392">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.13" value="1" />
+          <entry key="project.open.time.22" value="1" />
+          <entry key="project.opened" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="class" value="1" />
+          <entry key="csv" value="12" />
+          <entry key="java" value="20" />
+          <entry key="txt" value="18" />
+          <entry key="xml" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="1" />
+          <entry key="JAVA" value="20" />
+          <entry key="PLAIN_TEXT" value="30" />
+          <entry key="XML" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="class" value="1" />
+          <entry key="csv" value="1" />
+          <entry key="dummy" value="29" />
+          <entry key="java" value="1925" />
+          <entry key="txt" value="4" />
+          <entry key="xml" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="CLASS" value="1" />
+          <entry key="JAVA" value="1925" />
+          <entry key="PLAIN_TEXT" value="34" />
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/graphbuilder/GenerateCsv.java">
+        <entry file="file://$PROJECT_DIR$/src/graphbuilder/GenerateNodes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="46" column="27" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="46" selection-end-column="27" />
+            <state relative-caret-position="285">
+              <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/graphbuilder/CosineSimilarity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="37" column="56" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
-              <folding>
-                <element signature="e#1054#1062#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common_words.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="199" column="6" selection-start-line="199" selection-start-column="6" selection-end-line="199" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/graphbuilder/Data.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/graphbuilder/Graph.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-625">
-              <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/graphbuilder/Graph.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="77" column="59" selection-start-line="77" selection-start-column="59" selection-end-line="77" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/allCourses.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="7793" column="57" selection-start-line="7793" selection-start-column="57" selection-end-line="7793" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/graphbuilder/GenerateEdges.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="398">
+              <caret line="84" column="30" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -176,14 +219,36 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/graphbuilder/Vertex.java">
+        <entry file="file://$PROJECT_DIR$/src/graphbuilder/CreateNeo4jNodes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-153">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
+            <state relative-caret-position="-177">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
               <folding>
-                <element signature="e#1060#1061#0" expanded="true" />
-                <element signature="e#1083#1084#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/graphbuilder/CreateNeo4jEdges.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="29" column="84" selection-start-line="29" selection-start-column="84" selection-end-line="29" selection-end-column="84" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/neo4jCourses.csv">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/neo4jEdges.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="89">
+              <caret line="8426" column="32" selection-start-line="8426" selection-start-column="32" selection-end-line="8426" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -212,6 +277,21 @@
       <find>system</find>
       <find>got</find>
       <find>addEd</find>
+      <find>NETS</find>
+      <find>aliases:&quot;</find>
+      <find>name</find>
+      <find>defined</find>
+      <find>defined here as</find>
+      <find>HISTORY</find>
+      <find>aliases</find>
+      <find>[</find>
+      <find>SEMINAR HUMAN MEMORY: Big Data Memory and the Human Brain</find>
+      <find>WHERE</find>
+      <find>WHERE MY</find>
+      <find>csv</find>
+      <find>writer</find>
+      <find>Set</find>
+      <find>TreeSe</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -227,13 +307,20 @@
         <option value="$PROJECT_DIR$/src/app/Recommendations.java" />
         <option value="$PROJECT_DIR$/src/app/Recommendation.java" />
         <option value="$PROJECT_DIR$/src/app/Controller.java" />
-        <option value="$PROJECT_DIR$/src/graphbuilder/Data.java" />
-        <option value="$PROJECT_DIR$/src/graphbuilder/Vertex.java" />
-        <option value="$PROJECT_DIR$/src/graphbuilder/GenerateCsv.java" />
         <option value="$PROJECT_DIR$/src/graphbuilder/APIData.java" />
-        <option value="$PROJECT_DIR$/src/graphbuilder/Graph.java" />
         <option value="$PROJECT_DIR$/common_words.txt" />
         <option value="$PROJECT_DIR$/src/graphbuilder/CosineSimilarity.java" />
+        <option value="$PROJECT_DIR$/nodeCreationInstructions.txt" />
+        <option value="$PROJECT_DIR$/courses3.csv" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/graphbuilder/FilterNodes.java" />
+        <option value="$PROJECT_DIR$/src/graphbuilder/Data.java" />
+        <option value="$PROJECT_DIR$/src/graphbuilder/CreateNeo4jEdges.java" />
+        <option value="$PROJECT_DIR$/src/graphbuilder/GenerateCsv.java" />
+        <option value="$PROJECT_DIR$/src/graphbuilder/GenerateNodes.java" />
+        <option value="$PROJECT_DIR$/src/graphbuilder/Vertex.java" />
+        <option value="$PROJECT_DIR$/src/graphbuilder/Graph.java" />
+        <option value="$PROJECT_DIR$/src/graphbuilder/CreateNeo4jNodes.java" />
         <option value="$PROJECT_DIR$/src/graphbuilder/GenerateEdges.java" />
       </list>
     </option>
@@ -283,11 +370,16 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547826320506" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548431154007" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="graphbuilder" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -310,13 +402,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Application (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="app.Application" />
+    <configuration name="CreateNeo4jEdges" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphbuilder.CreateNeo4jEdges" />
       <module name="penn_course_recs" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="app.*" />
+          <option name="PATTERN" value="graphbuilder.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -324,13 +416,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="java.api.Application" />
+    <configuration name="CreateNeo4jNodes" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphbuilder.CreateNeo4jNodes" />
       <module name="penn_course_recs" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="java.api.*" />
+          <option name="PATTERN" value="graphbuilder.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -352,8 +444,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GenerateCsv" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="graphbuilder.GenerateCsv" />
+    <configuration name="GenerateEdges" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphbuilder.GenerateEdges" />
       <module name="penn_course_recs" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
@@ -366,8 +458,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GenerateEdges" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="graphbuilder.GenerateEdges" />
+    <configuration name="GenerateNodes" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graphbuilder.GenerateNodes" />
       <module name="penn_course_recs" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
@@ -412,19 +504,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Application" />
-      <item itemvalue="Application.Application (1)" />
       <item itemvalue="Application.Data" />
-      <item itemvalue="Application.GenerateCsv" />
+      <item itemvalue="Application.GenerateNodes" />
       <item itemvalue="Application.GenerateEdges" />
+      <item itemvalue="Application.CreateNeo4jNodes" />
+      <item itemvalue="Application.CreateNeo4jEdges" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.GenerateEdges" />
-        <item itemvalue="Application.GenerateCsv" />
+        <item itemvalue="Application.CreateNeo4jEdges" />
+        <item itemvalue="Application.CreateNeo4jNodes" />
+        <item itemvalue="Application.GenerateNodes" />
         <item itemvalue="Application.Data" />
-        <item itemvalue="Application.Application (1)" />
-        <item itemvalue="Application.Application" />
       </list>
     </recent_temporary>
   </component>
@@ -446,9 +538,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="36" y="23" width="1162" height="777" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29375" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30982143" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -456,13 +547,13 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32846716" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32846716" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32846716" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.329927" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.329927" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.329927" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32846716" />
@@ -485,13 +576,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/java/Spring.java" />
     <entry file="file://$PROJECT_DIR$/src/App.test.js" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="46" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/Application.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -527,24 +611,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/graphbuilder/Student.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/graphbuilder/ClassBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/graphbuilder/Data.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -558,58 +628,149 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/graphbuilder/GenerateCsv.java">
+    <entry file="file://$PROJECT_DIR$/common_words.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="46" column="27" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="46" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="2985">
+          <caret line="199" column="6" selection-start-line="199" selection-start-column="6" selection-end-line="199" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodeText01.txt" />
+    <entry file="file://$PROJECT_DIR$/src/graphbuilder/CosineSimilarity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/edges.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uniqueNodes.csv" />
+    <entry file="file://$PROJECT_DIR$/nodeCreationInstructions.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="77" selection-start-line="4" selection-start-column="77" selection-end-line="4" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neo4jEdges.txt" />
+    <entry file="file://$PROJECT_DIR$/uniqueNodes.txt" />
+    <entry file="file://$PROJECT_DIR$/courses2.csv" />
+    <entry file="file://$PROJECT_DIR$/src/graphbuilder/Data.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphbuilder/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/graphbuilder/Vertex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
+        <state relative-caret-position="75">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/rt.jar!/sun/net/www/protocol/https/HttpsURLConnectionImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="152" selection-start-line="152" selection-end-line="152" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/courses3.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="4399" column="405" selection-start-line="4399" selection-start-column="405" selection-end-line="4399" selection-end-column="405" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphbuilder/GenerateNodes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
           <folding>
-            <element signature="e#1060#1061#0" expanded="true" />
-            <element signature="e#1083#1084#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common_words.txt">
+    <entry file="file://$PROJECT_DIR$/courses2.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="199" column="6" selection-start-line="199" selection-start-column="6" selection-end-line="199" selection-end-column="6" />
+        <state relative-caret-position="166014">
+          <caret line="15502" selection-start-line="15502" selection-end-line="15502" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/graphbuilder/Graph.java">
+    <entry file="file://$PROJECT_DIR$/courses3.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-625">
-          <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+        <state relative-caret-position="1140">
+          <caret line="76" column="173" selection-start-line="76" selection-start-column="166" selection-end-line="76" selection-end-column="173" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/graphbuilder/CosineSimilarity.java">
+    <entry file="file://$PROJECT_DIR$/allCourses.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="37" column="56" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
+        <state relative-caret-position="114">
+          <caret line="7793" column="57" selection-start-line="7793" selection-start-column="57" selection-end-line="7793" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphbuilder/CreateNeo4jNodes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-177">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
           <folding>
-            <element signature="e#1054#1062#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphbuilder/CreateNeo4jEdges.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="29" column="84" selection-start-line="29" selection-start-column="84" selection-end-line="29" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neo4jCourses.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neo4jEdges.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="8426" column="32" selection-start-line="8426" selection-start-column="32" selection-end-line="8426" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/graphbuilder/GenerateEdges.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="398">
+          <caret line="84" column="30" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphbuilder/Graph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="77" column="59" selection-start-line="77" selection-start-column="59" selection-end-line="77" selection-end-column="59" />
         </state>
       </provider>
     </entry>

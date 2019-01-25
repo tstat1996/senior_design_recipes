@@ -1,10 +1,9 @@
 package graphbuilder;
 
-import javafx.beans.binding.StringBinding;
 
 import java.util.*;
 
-public class Vertex implements Comparator<Vertex>, Comparable {
+public class Vertex {
 
 	private String name;
 	private String number;
@@ -145,19 +144,6 @@ public class Vertex implements Comparator<Vertex>, Comparable {
 	}
 
 
-
-	public String toGraphString() {
-		return "CREATE (:Course{" +
-				"name:\"" + this.name.replaceAll("\"", "\'") + "\", " +
-				"number:\"" + this.number + "\", " +
-				"id:\"" + this.id + "\", " +
-				"path:\"" + this.path + "\", " +
-				"description:\"" + this.description.trim().replaceAll("\"", "\'") + "\", " +
-				"courseQuality:\"" + this.courseQuality + "\", " +
-				"professorQuality:\"" + this.professorQuality + "\", " +
-				"difficulty:\"" + this.difficulty + "\"})";
-	}
-
 	public String toEdgeString() {
 		StringBuilder sb = new StringBuilder();
 		for(Vertex v: edgeList.keySet()) {
@@ -166,17 +152,17 @@ public class Vertex implements Comparator<Vertex>, Comparable {
 		return sb.toString();
 	}
 
-	@Override
-	public int compareTo(Object o) {
-		//System.out.println(o);
-		Vertex v = (Vertex) o;
-
-		return this.name.compareTo(v.name);
-	}
-
-	@Override
-	public int compare(Vertex o1, Vertex o2) {
-		return Integer.parseInt(o1.getId()) - Integer.parseInt(o2.getId());
-	}
+//	@Override
+//	public int compareTo(Object o) {
+//		//System.out.println(o);
+//		Vertex v = (Vertex) o;
+//
+//		return this.name.compareTo(v.name);
+//	}
+//
+//	@Override
+//	public int compare(Vertex o1, Vertex o2) {
+//		return Integer.parseInt(o1.getId()) - Integer.parseInt(o2.getId());
+//	}
 }
 

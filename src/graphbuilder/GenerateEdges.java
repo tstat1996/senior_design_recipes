@@ -8,7 +8,7 @@ public class GenerateEdges {
     public Set<Vertex> getAllCourses(){
         Set<Vertex> allCourses = new HashSet<Vertex>();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("courses2.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("allCourses.txt"));
             reader.readLine();
             String line = reader.readLine();
             Vertex v = null;
@@ -51,7 +51,7 @@ public class GenerateEdges {
     public void generateCosine(Set<Vertex> allCourses){
         FileWriter writer = null;
         try {
-            writer = new FileWriter("edges.txt");
+            writer = new FileWriter("allEdges.txt");
             for(Vertex v : allCourses){
                 //dont want repeats
                 writer.append(v.getName());
@@ -78,9 +78,17 @@ public class GenerateEdges {
     public static void main(String[] args){
         GenerateEdges ge = new GenerateEdges();
         Set<Vertex> allCourses = ge.getAllCourses();
+        Set<Vertex> fake = new HashSet<>();
+        int count = 1800;
+        Iterator<Vertex> iter = allCourses.iterator();
+        while (count > 0) {
+            fake.add(iter.next());
+            count--;
+        }
+        System.out.println(fake.size());
         System.out.println("got all courses");
-        Graph g = new Graph(allCourses);
+        Graph g = new Graph(fake);
         g.addEdges();
-        ge.generateCosine(allCourses);
+        ge.generateCosine(fake);
     }
 }

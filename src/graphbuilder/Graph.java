@@ -34,7 +34,7 @@ public class Graph {
                     Set<Vertex> list = invertedIndex.get(term);
                     list.add(course);
                 } else {
-                    Set<Vertex> list = new TreeSet<Vertex>();
+                    Set<Vertex> list = new HashSet<>();
                     list.add(course);
                     invertedIndex.put(term, list);
                 }
@@ -74,6 +74,7 @@ public class Graph {
         System.out.println("finished cosine similarity constructor");
         List<Vertex> arrayCourses = new ArrayList(allCourses);
         for(int i = 0; i < arrayCourses.size()-1; i++){
+            System.out.println(i);
             for(int j = i+1; j < arrayCourses.size(); j++){
                 Vertex v1 = arrayCourses.get(i);
                 Vertex v2 = arrayCourses.get(j);
@@ -89,7 +90,7 @@ public class Graph {
         //Debug;
         System.out.println("done");
         System.out.println("done");
-        System.out.println(arrayCourses.get(5).getEdgeList());
+//        System.out.println(arrayCourses.get(5).getEdgeList());
 
     }
 
