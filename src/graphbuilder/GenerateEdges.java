@@ -8,8 +8,7 @@ public class GenerateEdges {
     public Set<Vertex> getAllCourses(){
         Set<Vertex> allCourses = new HashSet<Vertex>();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("allCourses.txt"));
-            reader.readLine();
+            BufferedReader reader = new BufferedReader(new FileReader("neo4jCourses.txt"));
             String line = reader.readLine();
             Vertex v = null;
             while(line!= null){
@@ -79,7 +78,7 @@ public class GenerateEdges {
         GenerateEdges ge = new GenerateEdges();
         Set<Vertex> allCourses = ge.getAllCourses();
         Set<Vertex> fake = new HashSet<>();
-        int count = 1850;
+        int count = 3000;
         Iterator<Vertex> iter = allCourses.iterator();
         while (count > 0) {
             fake.add(iter.next());

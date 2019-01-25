@@ -10,12 +10,15 @@ public class CreateNeo4jNodes {
             File csvFile = new File("./allCourses.txt");
             BufferedReader br = null;
             Writer writer = null;
+            Writer writer1 = null;
             String line = "";
             String cvsSplitBy = "\t\t";
 
             try {
                 writer = new BufferedWriter(new OutputStreamWriter(
                         new FileOutputStream("neo4jCourses.csv"), "utf-8"));
+                writer1 = new BufferedWriter(new OutputStreamWriter(
+                        new FileOutputStream("neo4jCourses.txt"), "utf-8"));
                 br = new BufferedReader(new FileReader(csvFile));
 
                 HashSet<String> names = new HashSet<>();
@@ -26,7 +29,7 @@ public class CreateNeo4jNodes {
                 while ((line = br.readLine()) != null) {
                     String[] courseInfo = line.split(cvsSplitBy);
                     String name = courseInfo[0].replaceAll(",", "").replaceAll("\"", "").trim();
-                    if(courseInfo.length == 9 && !courseInfo[0].isEmpty() && !courseInfo[2].equals("id") && !names.contains(name)) {
+                    if(courseInfo.length == 9 && !name.isEmpty() && !courseInfo[2].equals("id") && !names.contains(name)) {
                         StringBuilder sb = new StringBuilder();
                         writer.append("\n");
                         sb.append(name);
@@ -47,6 +50,8 @@ public class CreateNeo4jNodes {
                         sb.append(',');
                         sb.append(courseInfo[8]);
                         writer.append(sb.toString());
+                        writer1.append(line);
+                        writer1.append("\n");
                         names.add(name);
                     }
 
@@ -64,6 +69,8 @@ public class CreateNeo4jNodes {
                         br.close();
                         writer.flush();
                         writer.close();
+                        writer1.flush();
+                        writer1.close();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
