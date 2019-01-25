@@ -2,6 +2,7 @@ package graphbuilder;
 
 
 import java.io.*;
+import java.util.HashSet;
 
 public class CreateNeo4jEdges {
 
@@ -10,6 +11,7 @@ public class CreateNeo4jEdges {
         BufferedReader br = null;
         Writer writer = null;
         String line = "";
+        HashSet<String> nodes = new HashSet<>();
 
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
@@ -27,15 +29,21 @@ public class CreateNeo4jEdges {
                         StringBuilder sb = new StringBuilder();
                         if (s.lastIndexOf(" ") >= 0) {
                             String v2 = s.substring(0, s.lastIndexOf(" ")).trim().replaceAll(",", "").replaceAll("\"", "");
-                            String val = s.substring(s.lastIndexOf(" ") + 1).trim();
-                            sb.append(v1);
-                            sb.append(',');
-                            sb.append(val);
-                            sb.append(',');
-                            sb.append(v2);
-                            writer.append("\n");
-                            writer.append(sb.toString());
+                            String nodeString1 = v1 + v2;
+                            String nodeString2 = v2 + v1;
+                            if (!v1.equals(v2) && !nodes.contains(nodeString1) && !nodes.contains(nodeString2)) {
+                                String val = s.substring(s.lastIndexOf(" ") + 1).trim();
+                                sb.append(v1);
+                                sb.append(',');
+                                sb.append(val);
+                                sb.append(',');
+                                sb.append(v2);
+                                writer.append("\n");
+                                writer.append(sb.toString());
+                                nodes.add(nodeString1);
+                                nodes.add(nodeString2);
 
+                            }
                         }
 
                     }

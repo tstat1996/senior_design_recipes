@@ -25,7 +25,7 @@ public class CreateNeo4jNodes {
 
                 while ((line = br.readLine()) != null) {
                     String[] courseInfo = line.split(cvsSplitBy);
-                    String name = courseInfo[0].replaceAll(",", "").replaceAll("\"", "");
+                    String name = courseInfo[0].replaceAll(",", "").replaceAll("\"", "").trim();
                     if(courseInfo.length == 9 && !courseInfo[0].isEmpty() && !courseInfo[2].equals("id") && !names.contains(name)) {
                         StringBuilder sb = new StringBuilder();
                         writer.append("\n");
