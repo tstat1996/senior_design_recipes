@@ -59,9 +59,9 @@ public class GenerateEdges {
                 Map<Vertex, Double> edgeList = v.getEdgeList();
                 for(Vertex edge : edgeList.keySet()){
                     writer.append(edge.getName());
-                    writer.append(" ");
+                    writer.append("-###-");
                     writer.append(String.valueOf(edgeList.get(edge)));
-                    writer.append(",");
+                    writer.append("---");
 
                 }
                 writer.append("\n");
@@ -79,7 +79,7 @@ public class GenerateEdges {
         GenerateEdges ge = new GenerateEdges();
         Set<Vertex> allCourses = ge.getAllCourses();
         Set<Vertex> fake = new HashSet<>();
-        int count = 1800;
+        int count = 1850;
         Iterator<Vertex> iter = allCourses.iterator();
         while (count > 0) {
             fake.add(iter.next());

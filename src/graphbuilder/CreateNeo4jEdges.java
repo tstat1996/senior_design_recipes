@@ -2,12 +2,13 @@ package graphbuilder;
 
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class CreateNeo4jEdges {
 
     public static void main(String[] args) {
-        File csvFile = new File("./edges.txt");
+        File csvFile = new File("./allEdges.txt");
         BufferedReader br = null;
         Writer writer = null;
         String line = "";
@@ -23,16 +24,19 @@ public class CreateNeo4jEdges {
 
             while ((line = br.readLine()) != null) {
                 String v1 = line.substring(0,line.indexOf(":\t")).trim().replaceAll(",", "").replaceAll("\"", "");
-                String[] edges = line.substring(line.indexOf(":\t") + 1).split(",");
-                if (edges.length > 0) {
-                    for(String s: edges) {
+                String[] edgeInfo = line.substring(line.indexOf(":\t") + 1).split("---");
+
+                if (edgeInfo.length > 0) {
+                    for(String s: edgeInfo) {
                         StringBuilder sb = new StringBuilder();
-                        if (s.lastIndexOf(" ") >= 0) {
-                            String v2 = s.substring(0, s.lastIndexOf(" ")).trim().replaceAll(",", "").replaceAll("\"", "");
+                        String[] edge = s.split("-###-");
+                        if (edge.length == 2) {
+                            String v2 = edge[0].trim().replaceAll(",", "").replaceAll("\"", "");
+                            String val = edge[1].trim();
                             String nodeString1 = v1 + v2;
                             String nodeString2 = v2 + v1;
+
                             if (!v1.equals(v2) && !nodes.contains(nodeString1) && !nodes.contains(nodeString2)) {
-                                String val = s.substring(s.lastIndexOf(" ") + 1).trim();
                                 sb.append(v1);
                                 sb.append(',');
                                 sb.append(val);
@@ -45,7 +49,6 @@ public class CreateNeo4jEdges {
 
                             }
                         }
-
                     }
                 }
             }
