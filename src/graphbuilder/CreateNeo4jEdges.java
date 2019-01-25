@@ -20,13 +20,13 @@ public class CreateNeo4jEdges {
             writer.append(fileHead);
 
             while ((line = br.readLine()) != null) {
-                String v1 = line.substring(0,line.indexOf(":\t")).trim();
+                String v1 = line.substring(0,line.indexOf(":\t")).trim().replaceAll(",", "").replaceAll("\"", "");
                 String[] edges = line.substring(line.indexOf(":\t") + 1).split(",");
                 if (edges.length > 0) {
                     for(String s: edges) {
                         StringBuilder sb = new StringBuilder();
                         if (s.lastIndexOf(" ") >= 0) {
-                            String v2 = s.substring(0, s.lastIndexOf(" ")).trim();
+                            String v2 = s.substring(0, s.lastIndexOf(" ")).trim().replaceAll(",", "").replaceAll("\"", "");
                             String val = s.substring(s.lastIndexOf(" ") + 1).trim();
                             sb.append(v1);
                             sb.append(',');
