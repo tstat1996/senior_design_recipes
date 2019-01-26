@@ -1,7 +1,6 @@
 package graphbuilder;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
@@ -25,13 +24,13 @@ public class CosineSimilarity {
      */
     public CosineSimilarity(Graph graph) {
         this.graph = graph;
-        tfIdfWeights = new HashMap<Vertex, HashMap<String, Double>>();
+        tfIdfWeights = new HashMap<>();
 
         createTfIdfWeights();
     }
 
     private Set<String> commonWords(){
-        BufferedReader reader = null;
+        BufferedReader reader;
         Set<String> commonWords = new HashSet<String>();
 
         try {
@@ -56,7 +55,7 @@ public class CosineSimilarity {
         Set<String> commonWords = commonWords();
         HashMap<String, Double> weights;
         for (Vertex vertex : graph.getDocuments()) {
-            weights = new HashMap<String, Double>();
+            weights = new HashMap<>();
 
             for (String term : terms) {
                 if(commonWords.contains(term)){
@@ -66,8 +65,9 @@ public class CosineSimilarity {
                 double idf = graph.getInverseDocumentFrequency(term);
 
                 double weight = tf * idf;
-
-                weights.put(term, weight);
+                if(weight != 0) {
+                    weights.put(term, weight);
+                }
             }
             tfIdfWeights.put(vertex, weights);
         }
@@ -101,7 +101,9 @@ public class CosineSimilarity {
         HashMap<String, Double> weights2 = tfIdfWeights.get(v2);
 
         for (String term : weights1.keySet()) {
-            product += weights1.get(term) * weights2.get(term);
+            if (weights2.containsKey(term)) {
+                product += weights1.get(term) * weights2.get(term);
+            }
         }
 
         return product;

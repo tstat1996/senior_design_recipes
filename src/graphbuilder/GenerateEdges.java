@@ -77,17 +77,10 @@ public class GenerateEdges {
     public static void main(String[] args){
         GenerateEdges ge = new GenerateEdges();
         Set<Vertex> allCourses = ge.getAllCourses();
-        Set<Vertex> fake = new HashSet<>();
-        int count = 3000;
-        Iterator<Vertex> iter = allCourses.iterator();
-        while (count > 0) {
-            fake.add(iter.next());
-            count--;
-        }
-        System.out.println(fake.size());
+        System.out.println(allCourses.size());
         System.out.println("got all courses");
-        Graph g = new Graph(fake);
+        Graph g = new Graph(allCourses);
         g.addEdges();
-        ge.generateCosine(fake);
+        ge.generateCosine(allCourses);
     }
 }
