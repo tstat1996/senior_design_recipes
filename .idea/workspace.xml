@@ -388,7 +388,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.CreateNeo4jEdges">
+  <component name="RunManager" selected="Application.CreateNeo4jNodes">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -507,9 +507,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CreateNeo4jNodes" />
         <item itemvalue="Application.CreateNeo4jEdges" />
         <item itemvalue="Application.GenerateEdges" />
-        <item itemvalue="Application.CreateNeo4jNodes" />
         <item itemvalue="Application.GenerateNodes" />
         <item itemvalue="Application.Data" />
       </list>
