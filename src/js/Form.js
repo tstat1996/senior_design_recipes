@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import TextField from '@material-ui/core/TextField';
 import '../css/Form.css';
 
 class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        courses: 'CIS 110',
+        courses: 'CIS-197',
+        courseHistory: 'CIS-110 CIS-120 CIS-160',
         difficulty: '3',
         mounted: false,
         quality: '3',
@@ -13,6 +15,7 @@ class Form extends Component {
     };
 
     this.handleCourseChange = this.handleCourseChange.bind(this);
+    this.handleCourseHistoryChange = this.handleCourseHistoryChange.bind(this);
     this.handleDifficultyChange = this.handleDifficultyChange.bind(this);
     this.handleQualityChange = this.handleQualityChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,6 +28,10 @@ class Form extends Component {
 
   handleCourseChange(event) {
     this.setState({courses: event.target.value});
+  }
+
+  handleCourseHistoryChange(event) {
+    this.setState({courseHistory: event.target.value});
   }
 
   handleDifficultyChange(event) {
@@ -86,11 +93,15 @@ class Form extends Component {
         <div>
           <form onSubmit={this.handleSubmit}>
             <div className="row">
-              <label> Courses </label>
-              <input type="text" value={this.state.courses} onChange={this.handleCourseChange} />
+              <label> Courses You Liked </label>
+              <TextField className="textField" type="text" multiline value={this.state.courses} onChange={this.handleCourseChange} />
             </div>
             <div className="row">
-              <label> Course Difficulty </label>
+              <label> Courses You Took </label>
+              <TextField className="textField" type="text" multiline value={this.state.courseHistory} onChange={this.handleCourseHistoryChange} />
+            </div>
+            <div className="row">
+              <label> Ideal Course Difficulty </label>
               <select value={this.state.difficulty} onChange={this.handleDifficultyChange}>
                 <option value="1">0-1</option>
                 <option value="2">1-2</option>
@@ -99,7 +110,7 @@ class Form extends Component {
               </select>
             </div>
             <div className="row">
-              <label> Course Quality </label>
+              <label> Ideal Course Quality </label>
               <select value={this.state.quality} onChange={this.handleQualityChange}>
                   <option value="1">0-1</option>
                   <option value="2">1-2</option>
