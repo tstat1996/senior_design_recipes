@@ -27,6 +27,7 @@ public class Controller {
     @RequestMapping("/request")
     @CrossOrigin(origins = "http://localhost:3000")
     public List<Recommendation> request(@RequestParam(value="courses", defaultValue = "") String courses,
+                                        @RequestParam(value="courseHistory", defaultValue = "") String courseHistory,
                                         @RequestParam(value = "diff", defaultValue = "4") String diff,
                                         @RequestParam(value = "courseQual", defaultValue = "4") String courseQual) {
         List<Recommendation> recs = new ArrayList<Recommendation>();
