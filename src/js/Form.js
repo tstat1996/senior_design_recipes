@@ -1,6 +1,29 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import MenuItem from '@material-ui/core/MenuItem';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import '../css/Form.css';
+
+const styles = theme => ({
+  button: {
+    fontSize: '14pt',
+    marginTop: '20px',
+    textTransform: 'none',
+  },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200,
+  },
+});
 
 class Form extends Component {
   constructor(props) {
@@ -89,36 +112,74 @@ class Form extends Component {
     const { mounted } = this.state;
     if (!mounted) return null;
     const recs = this.renderRecs();
+    const { classes } = this.props;
     return (
-        <div>
+        <div className={classes.container}>
           <form onSubmit={this.handleSubmit}>
+            <p className="info"> Please enter your courses in the following format: CIS-197 ACCT-101 </p>
             <div className="row">
               <label> Courses You Liked </label>
-              <TextField className="textField" type="text" multiline value={this.state.courses} onChange={this.handleCourseChange} />
+              <TextField
+                className={classes.textField}
+                multiline
+                type="text"
+                variant="outlined"
+                value={this.state.courses}
+                onChange={this.handleCourseChange}
+              />
             </div>
             <div className="row">
               <label> Courses You Took </label>
-              <TextField className="textField" type="text" multiline value={this.state.courseHistory} onChange={this.handleCourseHistoryChange} />
+              <TextField
+                className={classes.textField}
+                multiline
+                type="text"
+                variant="outlined"
+                value={this.state.courseHistory}
+                onChange={this.handleCourseHistoryChange}
+              />
             </div>
             <div className="row">
               <label> Ideal Course Difficulty </label>
-              <select value={this.state.difficulty} onChange={this.handleDifficultyChange}>
-                <option value="1">0-1</option>
-                <option value="2">1-2</option>
-                <option value="3">2-3</option>
-                <option value="4">3-4</option>
-              </select>
+              <Select
+                value={this.state.difficulty}
+                onChange={this.handleDifficultyChange}
+                input={
+                  <OutlinedInput
+                    name="difficulty"
+                  />
+                }
+              >
+                <MenuItem value={1}>0-1</MenuItem>
+                <MenuItem value={2}>1-2</MenuItem>
+                <MenuItem value={3}>2-3</MenuItem>
+                <MenuItem value={4}>3-4</MenuItem>
+              </Select>
             </div>
             <div className="row">
               <label> Ideal Course Quality </label>
-              <select value={this.state.quality} onChange={this.handleQualityChange}>
-                  <option value="1">0-1</option>
-                  <option value="2">1-2</option>
-                  <option value="3">2-3</option>
-                  <option value="4">3-4</option>
-                </select>
+              <Select
+                value={this.state.difficulty}
+                onChange={this.handleQualityChange}
+                input={
+                  <OutlinedInput
+                    name="quality"
+                  />
+                }
+              >
+                <MenuItem value={1}>0-1</MenuItem>
+                <MenuItem value={2}>1-2</MenuItem>
+                <MenuItem value={3}>2-3</MenuItem>
+                <MenuItem value={4}>3-4</MenuItem>
+              </Select>
             </div>
-            <input type="submit" value="Submit" />
+            <Button
+              className={classes.button}
+              variant="outlined"
+              type="submit"
+            >
+             Submit
+            </Button>
           </form>
           {recs}
         </div>
@@ -126,4 +187,4 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default withStyles(styles)(Form);
