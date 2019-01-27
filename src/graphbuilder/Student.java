@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Student {
-	Map<String, List<String>> courses;
+	private Map<String, List<String>> courses;
 	
-	public Student(){
-		courses = new HashMap<String, List<String>>();
+	public Student() {
+		this.courses = new HashMap<String, List<String>>();
 	}
 	
 	public void addCourse(String subject, String number){
