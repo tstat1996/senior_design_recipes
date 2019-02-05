@@ -23,8 +23,14 @@ public class GraphAccess implements AutoCloseable
         driver.close();
     }
 
-    public String access(List<String> aliases) {
+    public String access(String courses, String courseHistory, String diff, String courseQual, String profQual) {
         try(Session session = driver.session()) {
+            String[] coursesLiked = courses.split(" ");
+            String[] coursesTaken = courseHistory.split(" ");
+            Integer difficulty = Integer.parseInt(diff);
+            Integer courseQuality = Integer.parseInt(courseQual);
+            Integer profQuality = Integer.parseInt(profQual);
+            // TODO: incorporate these into the neo4j Match statement
             String response = session.writeTransaction( new TransactionWork<String>()
             {
                 @Override

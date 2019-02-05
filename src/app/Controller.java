@@ -31,12 +31,12 @@ public class Controller {
     public List<Recommendation> request(@RequestParam(value="courses", defaultValue = "") String courses,
                                         @RequestParam(value="courseHistory", defaultValue = "") String courseHistory,
                                         @RequestParam(value = "diff", defaultValue = "4") String diff,
-                                        @RequestParam(value = "courseQual", defaultValue = "4") String courseQual) {
+                                        @RequestParam(value = "courseQual", defaultValue = "4") String courseQual,
+                                        @RequestParam(value = "profQual", defaultValue = "4") String profQual) {
         List<Recommendation> recs = new ArrayList<Recommendation>();
         try ( GraphAccess graph = new GraphAccess( "bolt://localhost:7687", "sam", "sam" ) )
         {
-            // TODO: pass request params into graph.access
-            String response = graph.access( null );
+            String response = graph.access( courses, courseHistory, diff, courseQual, profQual);
             JSONArray arr = (JSONArray) new JSONParser().parse(response);
             for (Object obj : arr) {
                 JSONObject jo = (JSONObject) obj;

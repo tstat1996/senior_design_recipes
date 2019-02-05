@@ -33,14 +33,16 @@ class Form extends Component {
         courseHistory: 'CIS-110 CIS-120 CIS-160',
         difficulty: '3',
         mounted: false,
-        quality: '3',
+        courseQuality: '3',
+        profQuality: '3',
         recs: [],
     };
 
     this.handleCourseChange = this.handleCourseChange.bind(this);
     this.handleCourseHistoryChange = this.handleCourseHistoryChange.bind(this);
     this.handleDifficultyChange = this.handleDifficultyChange.bind(this);
-    this.handleQualityChange = this.handleQualityChange.bind(this);
+    this.handleCourseQualityChange = this.handleCourseQualityChange.bind(this);
+    this.handleProfQualityChange = this.handleProfQualityChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderRecs = this.renderRecs.bind(this);
   }
@@ -61,14 +63,18 @@ class Form extends Component {
     this.setState({difficulty: event.target.value});
   }
 
-  handleQualityChange(event) {
-    this.setState({quality: event.target.value});
+  handleCourseQualityChange(event) {
+    this.setState({courseQuality: event.target.value});
   }
+
+  handleProfQualityChange(event) {
+      this.setState({profQuality: event.target.value});
+    }
 
   async handleSubmit(event) {
     event.preventDefault();
-    const { courses, difficulty, quality } = this.state;
-    const url = `http://localhost:8080/request/?courses=${courses}&diff=${difficulty}&courseQual=${quality}`;
+    const { courses, courseHistory, difficulty, courseQuality, profQuality } = this.state;
+    const url = `http://localhost:8080/request/?courses=${courses}&courseHistory=${courseHistory}&diff=${difficulty}&courseQual=${courseQuality}&profQual=${profQuality}`;
     const response = await fetch(url);
       response.json()
       .then(data => {
@@ -114,7 +120,7 @@ class Form extends Component {
     const recs = this.renderRecs();
     const { classes } = this.props;
     return (
-      <div>
+      <div className="form-root">
         <div className={classes.container}>
           <form onSubmit={this.handleSubmit}>
             <p className="info"> Please enter your courses in the following format: CIS-197 ACCT-101 </p>
@@ -160,8 +166,25 @@ class Form extends Component {
             <div className="row">
               <label> Ideal Course Quality </label>
               <Select
-                value={this.state.difficulty}
-                onChange={this.handleQualityChange}
+                value={this.state.courseQuality}
+                onChange={this.handleCourseQualityChange}
+                input={
+                  <OutlinedInput
+                    name="quality"
+                  />
+                }
+              >
+                <MenuItem value={1}>0-1</MenuItem>
+                <MenuItem value={2}>1-2</MenuItem>
+                <MenuItem value={3}>2-3</MenuItem>
+                <MenuItem value={4}>3-4</MenuItem>
+              </Select>
+            </div>
+            <div className="row">
+              <label> Ideal Professor Quality </label>
+              <Select
+                value={this.state.profQuality}
+                onChange={this.handleProfQualityChange}
                 input={
                   <OutlinedInput
                     name="quality"
