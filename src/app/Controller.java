@@ -53,7 +53,31 @@ public class Controller {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        filterCourses(recs, courses, courseHistory);
         return recs;
+    }
+
+    private static void filterCourses(List<Recommendation> recs, String coursesLiked, String courseHistory) {
+        List<Recommendation> toRemove = new ArrayList<Recommendation>();
+        String[] ch = courseHistory.split(" ");
+        String[] cl = coursesLiked.split(" ");
+        for (int i = 0; i < ch.length; i++) {
+            for (Recommendation r : recs) {
+                if (r.getCode().contains(ch[i])) {
+                    toRemove.add(r);
+                }
+            }
+        }
+        for (int i = 0; i < cl.length; i++) {
+            for (Recommendation r : recs) {
+                if (r.getCode().contains(cl[i])) {
+                    toRemove.add(r);
+                }
+            }
+        }
+        for (Recommendation r : toRemove) {
+            recs.remove(r);
+        }
     }
 
     @Bean
