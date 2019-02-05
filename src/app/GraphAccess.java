@@ -2,13 +2,7 @@ package app;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.neo4j.driver.v1.AuthTokens;
-import org.neo4j.driver.v1.Driver;
-import org.neo4j.driver.v1.GraphDatabase;
-import org.neo4j.driver.v1.Session;
-import org.neo4j.driver.v1.StatementResult;
-import org.neo4j.driver.v1.Transaction;
-import org.neo4j.driver.v1.TransactionWork;
+import org.neo4j.driver.v1.*;
 
 import java.util.List;
 
@@ -29,58 +23,31 @@ public class GraphAccess implements AutoCloseable
         driver.close();
     }
 
-    public void printGreeting( final String message )
-    {
-        try ( Session session = driver.session() )
-        {
-            String greeting = session.writeTransaction( new TransactionWork<String>()
-            {
-                @Override
-                public String execute( Transaction tx )
-                {
-                    StatementResult result = tx.run( "CREATE (a:Greeting) " +
-                                    "SET a.message = $message " +
-                                    "RETURN a.message + ', from node ' + id(a)",
-                            parameters( "message", message ) );
-                    return result.single().get( 0 ).asString();
-                }
-            } );
-            System.out.println( greeting );
-        }
-    }
-
-    public void access(List<String> aliases) {
+    public String access(List<String> aliases) {
         try(Session session = driver.session()) {
-            String reponse = session.writeTransaction( new TransactionWork<String>()
+            String response = session.writeTransaction( new TransactionWork<String>()
             {
                 @Override
                 public String execute( Transaction tx )
                 {
                     StatementResult result = tx.run( "MATCH (n:Course)-[w:Edge]->(p) WHERE n.aliases CONTAINS 'CIS-120'  RETURN PROPERTIES(p), w.weight AS weight");
-                    System.out.print(result.list().get(0).get(0));
-                    return result.list().get(0).get(0).toString();
+                    List<Record> records = result.list();
+                    JSONArray array = new JSONArray();
+                    for (Record r : records) {
+                        JSONObject ob = new JSONObject();
+                        Value v = r.get(0);
+                        ob.put("difficulty", v.get("difficulty"));
+                        ob.put("professorQuality", v.get("professorQuality"));
+                        ob.put("courseQuality", v.get("courseQuality"));
+                        ob.put("description", v.get("description"));
+                        ob.put("name", v.get("name"));
+                        ob.put("aliases", v.get("aliases"));
+                        array.add(ob);
+                    }
+                    return array.toString();
                 }
             } );
-
-            JSONArray array = new JSONArray();
-            JSONParser parser = new JSONParser();
-            try {
-                System.out.print("HERE");
-                JSONObject ob = (JSONObject) parser.parse(reponse);
-                System.out.println(ob.toJSONString());
-            } catch (Exception e) {
-                System.out.println(e.getStackTrace()[0].toString());
-
-            }
-            //System.out.print(reponse);
-        }
-    }
-
-    public static void main( String... args ) throws Exception
-    {
-        try ( GraphAccess greeter = new GraphAccess( "bolt://localhost:7687", "sam", "sam" ) )
-        {
-            greeter.access( null );
+            return response;
         }
     }
 }

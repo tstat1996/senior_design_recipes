@@ -1,5 +1,8 @@
 package app;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +12,6 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,10 +33,26 @@ public class Controller {
                                         @RequestParam(value = "diff", defaultValue = "4") String diff,
                                         @RequestParam(value = "courseQual", defaultValue = "4") String courseQual) {
         List<Recommendation> recs = new ArrayList<Recommendation>();
-        Recommendation rec1 = new Recommendation("Algos with Rajiv", "CIS 121", 3.5, 3.6, 3.8, "Algorithms in Java");
-        Recommendation rec2 = new Recommendation("Code with Swap", "CIS 120", 2.0, 3.3, 3.5, "Java and OCaml");
-        recs.add(rec1);
-        recs.add(rec2);
+        try ( GraphAccess graph = new GraphAccess( "bolt://localhost:7687", "sam", "sam" ) )
+        {
+            // TODO: pass request params into graph.access
+            String response = graph.access( null );
+            JSONArray arr = (JSONArray) new JSONParser().parse(response);
+            for (Object obj : arr) {
+                JSONObject jo = (JSONObject) obj;
+                Recommendation rec = new Recommendation(
+                        (String) jo.get("name"),
+                        (String) jo.get("aliases"),
+                        Double.parseDouble((String) jo.get("difficulty")),
+                        Double.parseDouble((String) jo.get("courseQuality")),
+                        Double.parseDouble((String) jo.get("professorQuality")),
+                        (String) jo.get("description")
+                );
+                recs.add(rec);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         return recs;
     }
 

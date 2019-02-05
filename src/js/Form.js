@@ -96,11 +96,11 @@ class Form extends Component {
             {recs.map(rec =>
               <tr>
                 <td>{rec.code}</td>
-                <td>{rec.name}</td>
+                <td className="name">{rec.name}</td>
                 <td>{rec.courseQuality}</td>
                 <td>{rec.courseDifficulty}</td>
                 <td>{rec.profQuality}</td>
-                <td>{rec.description}</td>
+                <td className="desc">{rec.description}</td>
               </tr>
             )}
         </table>
@@ -114,6 +114,7 @@ class Form extends Component {
     const recs = this.renderRecs();
     const { classes } = this.props;
     return (
+      <div>
         <div className={classes.container}>
           <form onSubmit={this.handleSubmit}>
             <p className="info"> Please enter your courses in the following format: CIS-197 ACCT-101 </p>
@@ -181,8 +182,9 @@ class Form extends Component {
              Submit
             </Button>
           </form>
-          {recs}
         </div>
+        {recs}
+      </div>
     );
   }
 }
