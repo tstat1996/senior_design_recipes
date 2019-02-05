@@ -1,6 +1,5 @@
-input {
+.info {
   font-size: 12pt;
-  height: 20px;
 }
 
 label {
@@ -19,6 +18,13 @@ select {
 
 .table {
   font-size: 12pt;
+}
+
+.textField {
+  font-size: 12pt;
+  color: #fff;
+  height: 20px;
+  width: 200px;
 }
 
 th {
