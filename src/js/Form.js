@@ -6,6 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
+import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import '../css/Form.css';
 
 const styles = theme => ({
@@ -122,17 +123,20 @@ class Form extends Component {
     return (
       <div className="form-root">
         <div className={classes.container}>
-          <form onSubmit={this.handleSubmit}>
+          <ValidatorForm onSubmit={this.handleSubmit}>
             <p className="info"> Please enter your courses in the following format: CIS-197 ACCT-101 </p>
             <div className="row">
               <label> Courses You Liked </label>
-              <TextField
+              <TextValidator
                 className={classes.textField}
                 multiline
                 type="text"
                 variant="outlined"
                 value={this.state.courses}
                 onChange={this.handleCourseChange}
+                validators={['required', 'matchRegexp:^([A-Z]{3}\-[0-9]{3}\\s?)+$']}
+                errorMessages={['This field is required', 'Please format course codes as shown above']}
+                name="courses"
               />
             </div>
             <div className="row">
@@ -144,6 +148,9 @@ class Form extends Component {
                 variant="outlined"
                 value={this.state.courseHistory}
                 onChange={this.handleCourseHistoryChange}
+                validators={['required', 'matchRegexp:^([A-Z]{3}\-[0-9]{3}\\s?)+$']}
+                errorMessages={['This field is required', 'Please format course codes as shown above']}
+                name="courseHistory"
               />
             </div>
             <div className="row">
@@ -204,7 +211,7 @@ class Form extends Component {
             >
              Submit
             </Button>
-          </form>
+          </ValidatorForm>
         </div>
         {recs}
       </div>
