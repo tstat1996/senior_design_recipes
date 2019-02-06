@@ -1,12 +1,10 @@
 package app;
-import org.json.simple.parser.JSONParser;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.neo4j.driver.v1.*;
 
 import java.util.List;
-
-import static org.neo4j.driver.v1.Values.parameters;
 
 public class GraphAccess implements AutoCloseable
 {
@@ -23,20 +21,33 @@ public class GraphAccess implements AutoCloseable
         driver.close();
     }
 
-    public String access(String courses, String courseHistory, String diff, String courseQual, String profQual) {
+    public String buildMatch(String[] courses, int diff, int cQual, int pQUal) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("MATCH (n:Course)-[w:Edge]->(p) WHERE (");
+        for (String s : courses) {
+            sb.append("n.aliases CONTAINS '" + s + "' OR ");
+        }
+        sb.delete(sb.length() - 4, sb.length());
+        sb.append(") AND (toFloat(p.professorQuality) >= " + (pQUal - 1) + " AND toFloat(p.professorQuality) <= " + pQUal + ")");
+        sb.append(" AND (toFloat(p.courseQuality) >= " + (cQual - 1) + " AND toFloat(p.courseQuality) <= " + cQual + ")");
+        sb.append(" AND (toFloat(p.difficulty) >= " + (diff - 1) + " AND toFloat(p.difficulty) <= " + diff + ")");
+        sb.append(" RETURN PROPERTIES(p), w.weight AS weight");
+        return sb.toString();
+    }
+
+    public String access(String courses, String diff, String courseQual, String profQual) {
         try(Session session = driver.session()) {
             String[] coursesLiked = courses.split(" ");
-            String[] coursesTaken = courseHistory.split(" ");
             Integer difficulty = Integer.parseInt(diff);
             Integer courseQuality = Integer.parseInt(courseQual);
             Integer profQuality = Integer.parseInt(profQual);
-            // TODO: incorporate these into the neo4j Match statement
-            String response = session.writeTransaction( new TransactionWork<String>()
-            {
+
+            String statement = buildMatch(coursesLiked, difficulty, courseQuality, profQuality);
+            String response = session.writeTransaction( new TransactionWork<String>() {
                 @Override
                 public String execute( Transaction tx )
                 {
-                    StatementResult result = tx.run( "MATCH (n:Course)-[w:Edge]->(p) WHERE n.aliases CONTAINS 'CIS-120'  RETURN PROPERTIES(p), w.weight AS weight");
+                    StatementResult result = tx.run( statement);
                     List<Record> records = result.list();
                     JSONArray array = new JSONArray();
                     for (Record r : records) {

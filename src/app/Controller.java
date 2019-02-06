@@ -36,7 +36,7 @@ public class Controller {
         List<Recommendation> recs = new ArrayList<Recommendation>();
         try ( GraphAccess graph = new GraphAccess( "bolt://localhost:7687", "sam", "sam" ) )
         {
-            String response = graph.access( courses, courseHistory, diff, courseQual, profQual);
+            String response = graph.access( courses, diff, courseQual, profQual);
             JSONArray arr = (JSONArray) new JSONParser().parse(response);
             for (Object obj : arr) {
                 JSONObject jo = (JSONObject) obj;

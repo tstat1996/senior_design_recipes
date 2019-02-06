@@ -36,6 +36,7 @@ class Form extends Component {
         courseQuality: '3',
         profQuality: '3',
         recs: [],
+        noResults: false
     };
 
     this.handleCourseChange = this.handleCourseChange.bind(this);
@@ -78,6 +79,9 @@ class Form extends Component {
     const response = await fetch(url);
       response.json()
       .then(data => {
+        if (!data.length) {
+            this.setState({ noResults: true })
+        }
         this.setState({ recs: data });
       });
   }
@@ -85,7 +89,11 @@ class Form extends Component {
   renderRecs() {
     const { recs } = this.state;
     if (!recs.length) {
-        return null;
+        if (this.state.noResults) {
+            return "We didn't find any results!";
+        } else {
+            return null;
+        }
     }
     return (
       <div className="table">
