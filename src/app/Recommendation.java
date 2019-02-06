@@ -10,12 +10,16 @@ public class Recommendation {
 
     public Recommendation(String name, String code, double courseDifficulty,
                           double courseQuality, double profQuality, String description) {
-        this.code = code;
+        this.code = parseCode(code);
         this.name = name;
         this.courseDifficulty = courseDifficulty;
         this.courseQuality = courseQuality;
         this.profQuality = profQuality;
         this.description = description;
+    }
+
+    public static String parseCode(String code) {
+        return code.substring(1, code.length() - 1);
     }
 
     public String getName() {
