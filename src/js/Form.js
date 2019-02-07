@@ -142,7 +142,7 @@ class Form extends Component {
                 variant="outlined"
                 value={this.state.courses}
                 onChange={this.handleCourseChange}
-                validators={['required', 'matchRegexp:^([A-Z]{3}\-[0-9]{3}\\s?)+$']}
+                validators={['required', 'matchRegexp:^([A-Z]{3,4}\-[0-9]{3}\\s?)+$']}
                 errorMessages={['This field is required', 'Please format course codes as shown above']}
                 name="courses"
               />
@@ -156,8 +156,8 @@ class Form extends Component {
                 variant="outlined"
                 value={this.state.courseHistory}
                 onChange={this.handleCourseHistoryChange}
-                validators={['required', 'matchRegexp:^([A-Z]{3}\-[0-9]{3}\\s?)+$']}
-                errorMessages={['This field is required', 'Please format course codes as shown above']}
+                validators={['matchRegexp:^([A-Z]{3,4}\-[0-9]{3}\\s?)+$']}
+                errorMessages={['Please format course codes as shown above']}
                 name="courseHistory"
               />
             </div>

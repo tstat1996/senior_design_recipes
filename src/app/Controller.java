@@ -58,6 +58,9 @@ public class Controller {
     }
 
     private static void filterCourses(List<Recommendation> recs, String coursesLiked, String courseHistory) {
+        if (courseHistory.equals("")) {
+            return;
+        }
         List<Recommendation> toRemove = new ArrayList<Recommendation>();
         String[] ch = courseHistory.split(" ");
         String[] cl = coursesLiked.split(" ");
