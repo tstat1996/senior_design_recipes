@@ -30,13 +30,14 @@ public class Controller {
     @CrossOrigin(origins = "http://localhost:3000")
     public List<Recommendation> request(@RequestParam(value="courses", defaultValue = "") String courses,
                                         @RequestParam(value="courseHistory", defaultValue = "") String courseHistory,
+                                        @RequestParam(value="interests", defaultValue = "") String interests,
                                         @RequestParam(value = "diff", defaultValue = "4") String diff,
                                         @RequestParam(value = "courseQual", defaultValue = "4") String courseQual,
                                         @RequestParam(value = "profQual", defaultValue = "4") String profQual) {
         List<Recommendation> recs = new ArrayList<Recommendation>();
         try ( GraphAccess graph = new GraphAccess( "bolt://localhost:7687", "sam", "sam" ) )
         {
-            String response = graph.access( courses, diff, courseQual, profQual);
+            String response = graph.access( courses, interests, diff, courseQual, profQual);
             JSONArray arr = (JSONArray) new JSONParser().parse(response);
             for (Object obj : arr) {
                 JSONObject jo = (JSONObject) obj;
@@ -58,6 +59,9 @@ public class Controller {
     }
 
     private static void filterCourses(List<Recommendation> recs, String coursesLiked, String courseHistory) {
+        if (courseHistory.equals("")) {
+            return;
+        }
         List<Recommendation> toRemove = new ArrayList<Recommendation>();
         String[] ch = courseHistory.split(" ");
         String[] cl = coursesLiked.split(" ");

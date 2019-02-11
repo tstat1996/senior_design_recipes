@@ -32,6 +32,7 @@ class Form extends Component {
     this.state = {
         courses: 'CIS-197',
         courseHistory: 'CIS-110 CIS-120 CIS-160',
+        interests: 'Machine learning, artificial intelligence',
         difficulty: '3',
         mounted: false,
         courseQuality: '3',
@@ -42,6 +43,7 @@ class Form extends Component {
 
     this.handleCourseChange = this.handleCourseChange.bind(this);
     this.handleCourseHistoryChange = this.handleCourseHistoryChange.bind(this);
+    this.handleInterestsChange = this.handleInterestsChange.bind(this);
     this.handleDifficultyChange = this.handleDifficultyChange.bind(this);
     this.handleCourseQualityChange = this.handleCourseQualityChange.bind(this);
     this.handleProfQualityChange = this.handleProfQualityChange.bind(this);
@@ -61,6 +63,10 @@ class Form extends Component {
     this.setState({courseHistory: event.target.value});
   }
 
+  handleInterestsChange(event) {
+    this.setState({interests: event.target.value});
+  }
+
   handleDifficultyChange(event) {
     this.setState({difficulty: event.target.value});
   }
@@ -75,8 +81,8 @@ class Form extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    const { courses, courseHistory, difficulty, courseQuality, profQuality } = this.state;
-    const url = `http://localhost:8080/request/?courses=${courses}&courseHistory=${courseHistory}&diff=${difficulty}&courseQual=${courseQuality}&profQual=${profQuality}`;
+    const { courses, courseHistory, interests, difficulty, courseQuality, profQuality } = this.state;
+    const url = `http://localhost:8080/request/?courses=${courses}&courseHistory=${courseHistory}&interests={interests}&diff=${difficulty}&courseQual=${courseQuality}&profQual=${profQuality}`;
     const response = await fetch(url);
       response.json()
       .then(data => {
@@ -142,7 +148,7 @@ class Form extends Component {
                 variant="outlined"
                 value={this.state.courses}
                 onChange={this.handleCourseChange}
-                validators={['required', 'matchRegexp:^([A-Z]{3}\-[0-9]{3}\\s?)+$']}
+                validators={['required', 'matchRegexp:^([A-Z]{3,4}\-[0-9]{3}\\s?)+$']}
                 errorMessages={['This field is required', 'Please format course codes as shown above']}
                 name="courses"
               />
@@ -156,9 +162,21 @@ class Form extends Component {
                 variant="outlined"
                 value={this.state.courseHistory}
                 onChange={this.handleCourseHistoryChange}
-                validators={['required', 'matchRegexp:^([A-Z]{3}\-[0-9]{3}\\s?)+$']}
-                errorMessages={['This field is required', 'Please format course codes as shown above']}
+                validators={['matchRegexp:^([A-Z]{3,4}\-[0-9]{3}\\s?)+$']}
+                errorMessages={['Please format course codes as shown above']}
                 name="courseHistory"
+              />
+            </div>
+            <div className="row">
+              <label> Interests </label>
+              <TextField
+                className={classes.textField}
+                multiline
+                type="text"
+                variant="outlined"
+                value={this.state.interests}
+                onChange={this.handleInterestsChange}
+                name="interests"
               />
             </div>
             <div className="row">

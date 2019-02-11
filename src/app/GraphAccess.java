@@ -35,9 +35,10 @@ public class GraphAccess implements AutoCloseable
         return sb.toString();
     }
 
-    public String access(String courses, String diff, String courseQual, String profQual) {
+    public String access(String courses, String interests, String diff, String courseQual, String profQual) {
         try(Session session = driver.session()) {
             String[] coursesLiked = courses.split(" ");
+            String[] topics = courses.split(", ");
             Integer difficulty = Integer.parseInt(diff);
             Integer courseQuality = Integer.parseInt(courseQual);
             Integer profQuality = Integer.parseInt(profQual);

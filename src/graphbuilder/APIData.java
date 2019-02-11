@@ -191,15 +191,79 @@ public class APIData {
 		return null;
 	}
 
-	public void addCourse(JSONObject course) {
+//	public double[] getRatings(String id){
+//        //System.out.println(id);
+//		try {
+//		    //System.out.println(baseUrl + "/courses/41332/reviews/" + token);
+//            URL url2 = new URL(baseUrl + "/courses/" + id + "/reviews/" + token);
+//            HttpURLConnection con = null;
+//			con = (HttpURLConnection) url2.openConnection();
+//			con.setRequestMethod("GET");
+//			con.setRequestProperty("Accept", "application/json");
+//			BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
+//			String output;
+//			StringBuilder sb = new StringBuilder();
+//			while ((output = br.readLine()) != null) {
+//				sb.append(output);
+//			}
+//			JSONParser parser = new JSONParser();
+//			JSONObject json = (JSONObject) parser.parse(sb.toString());
+//            JSONObject result = (JSONObject) json.get("result");
+//
+//            JSONArray values = (JSONArray) result.get("values");
+//            //System.out.println(values);
+//            //comm ability, instructor quality, simulate interest, instructor access, difficulty, work required, course quality
+//            double[] ratings = new double[7];
+//
+//            Iterator<JSONObject> iterator = values.iterator();
+//            //System.out.println(values);
+//            //System.out.println("new!!!!!!!!!!");
+//            int total = 0;
+//            while (iterator.hasNext()) {
+//
+//                total++;
+//                JSONObject occurrence = iterator.next();
+//                //System.out.println(occurrence);
+//                JSONObject courseRatings = (JSONObject) occurrence.get("ratings");
+//                String courseRatingsString = courseRatings.toString();
+//                if(!((courseRatings.toString()).contains("rDifficulty"))||!courseRatingsString.contains("rInstructorQuality")||!courseRatingsString.contains("rCourseQuality")){
+//                    total--;
+//                    System.out.println(courseRatings);
+//                    continue;
+//                }
+//               // System.out.println(courseRatings);
+//               // ratings[0] = ratings[0] + Double.valueOf((String)courseRatings.get("rCommAbility"));
+//                ratings[1] = ratings[1] + Double.valueOf((String)courseRatings.get("rInstructorQuality"));
+//               // ratings[2] = ratings[2] + Double.valueOf((String)courseRatings.get("rStimulateInterest"));
+//               // ratings[3] = ratings[3] + Double.valueOf((String)courseRatings.get("rInstructorAccess"));
+//                ratings[4] = ratings[4] + Double.valueOf((String)courseRatings.get("rDifficulty"));
+//               // ratings[5] = ratings[5] + Double.valueOf((String)courseRatings.get("rWorkRequired"));
+//                ratings[6] = ratings[6] + Double.valueOf((String)courseRatings.get("rCourseQuality"));
+//
+//
+//                //System.out.println(courseRatings);
+//            }
+//            for(int i = 0; i < ratings.length; i++){
+//                ratings[0] = ratings[0]/total;
+//            }
+//            return ratings;
+//			//System.out.println(courses);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+//    return new double[7];
+//	}
 
+	public void addCourse(JSONObject course) {
+		//System.out.println(course);
 		String path = (String) course.get("path");
 		JSONArray aliases = (JSONArray) course.get("aliases");
 		String number = (String) course.get("primary_alias");
 		String name = (String) course.get("name");
 
 		Long id = (Long) course.get("id");
-
 		Vertex vertex = new Vertex(name, id.toString(), path);
 		vertex.setNumber(number);
 		if (!allCourses.contains(vertex)) {
@@ -221,7 +285,15 @@ public class APIData {
 
 			vertex.setDescription(description);
 			if (!allCourses.contains(vertex)) {
-				//System.out.println(vertex.toString());
+//                double[] ratings = getRatings(String.valueOf(id));
+//                vertex.setCommAbility(ratings[0]);
+//                vertex.setProfessorQuality(ratings[1]);
+//                vertex.setStimulateInterest(ratings[2]);
+//                vertex.setInstructorAccess(ratings[3]);
+//                vertex.setDifficulty(ratings[4]);
+//                vertex.setWorkRequired(ratings[5]);
+//                vertex.setCourseQuality(ratings[6]);
+                //System.out.println(vertex.toString());
 				allCourses.add(vertex);
 			}
 		}
@@ -230,6 +302,7 @@ public class APIData {
 
 	public Set<String> getCoursesForDept() {
 		Set<String> depts = getDepts();
+
 		System.out.println("got departments");
 		URL url2;
 		for (String dept : depts) {
