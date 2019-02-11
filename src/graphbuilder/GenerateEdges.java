@@ -16,7 +16,7 @@ public class GenerateEdges {
 
                 String[] split = line.split("\t\t");
 
-                if(split.length!=9){
+                if(split.length!=14){
                     line = reader.readLine();
                     continue;
                 }

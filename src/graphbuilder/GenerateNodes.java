@@ -10,7 +10,7 @@ public class GenerateNodes {
         Graph g = new Graph();
         Set<Vertex> allCourses = g.getDocuments();
         System.out.println("got courses!!");
-        String fileHeader = "name\t\tnumber\t\tid\t\tpath\t\tdescription\t\taliases\t\tcourseQuality\t\tprofessorQuality\t\tdifficulty";
+        String fileHeader = "name\t\tnumber\t\tid\t\tpath\t\tdescription\t\taliases\t\tcourseQuality\t\tprofessorQuality\t\tdifficulty\t\tamountLearned\t\tworkRequired\t\tRecommendToMajor\t\tRecommendToNonMajor\t\tnumberReviewers";
         String comma = "\t\t";
         try {
             FileWriter writer = new FileWriter("allCourses.txt");
@@ -39,6 +39,16 @@ public class GenerateNodes {
                 writer.append(String.valueOf(v.getProfessorQuality()));
                 writer.append(comma);
                 writer.append(String.valueOf(v.getDifficulty()));
+                writer.append(comma);
+                writer.append(String.valueOf(v.getAmountLearned()));
+                writer.append(comma);
+                writer.append(String.valueOf(v.getWorkRequired()));
+                writer.append(comma);
+                writer.append(String.valueOf(v.getRecomendNonMaj()));
+                writer.append(comma);
+                writer.append(String.valueOf(v.getReccomendMaj()));
+                writer.append(comma);
+                writer.append(String.valueOf(v.getNumReviewers()));
 
 
             }

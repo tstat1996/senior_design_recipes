@@ -11,7 +11,8 @@ public class Vertex {
 	private String path;
 	private String description;
 	private List<String> aliases;
-	private double courseQuality, professorQuality, difficulty;
+	private int numReviewers;
+	private double courseQuality, professorQuality, difficulty, amountLearned, workRequired, reccomendMaj, recomendNonMaj;
 	Map<String, Integer> termFrequency;
 	Map<Vertex, Double> edgeList;
 
@@ -27,6 +28,11 @@ public class Vertex {
 		courseQuality = 0.0;
 		professorQuality = 0.0;
 		difficulty = 0.0;
+		amountLearned = 0.0;
+		workRequired = 0.0;
+		reccomendMaj = 0.0;
+		recomendNonMaj = 0.0;
+		numReviewers = 0;
 	}
 
 	public String getId() {
@@ -66,24 +72,44 @@ public class Vertex {
 	}
 
 	public void setCourseQuality(double qual){
-	    this.courseQuality = qual;
-    }
+		this.courseQuality = qual;
+	}
 
 	public double getProfessorQuality(){
 		return this.professorQuality;
 	}
 
-    public void setProfessorQuality(double qual){
-        this.professorQuality = qual;
-    }
+	public void setProfessorQuality(double qual){
+		this.professorQuality = qual;
+	}
 
 	public double getDifficulty(){
 		return this.difficulty;
 	}
 
-    public void setDifficulty(double diff){
-        this.difficulty = diff;
-    }
+	public void setDifficulty(double diff){
+		this.difficulty = diff;
+	}
+
+	public double getAmountLearned() { return amountLearned; }
+
+	public void setAmountLearned(double d) { this.amountLearned = d; }
+
+	public double getWorkRequired() { return workRequired; }
+
+	public void setWorkRequired(double d) { this.workRequired = d; }
+
+	public double getReccomendMaj() { return reccomendMaj; }
+
+	public void setReccomendMajor(double d) { this.reccomendMaj = d; }
+
+	public double getRecomendNonMaj() { return recomendNonMaj; }
+
+	public void setReccomendNonMajor(double d) { this.recomendNonMaj = d; }
+
+	public int getNumReviewers() { return numReviewers; }
+
+	public void setNumReviewers(int numReviewers) { this.numReviewers = numReviewers; }
 
 	public boolean firstAlias(){
 		return number == null;

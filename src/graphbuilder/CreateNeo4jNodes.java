@@ -23,13 +23,13 @@ public class CreateNeo4jNodes {
 
                 HashSet<String> names = new HashSet<>();
 
-                String fileHead = "name,number,id,path,description,aliases,courseQuality,professorQuality,difficulty";
+                String fileHead = "name,number,id,path,description,aliases,courseQuality,professorQuality,difficulty,amountLearned,workRequired,RecommendToMajor,RecommendToNonMajor,numberReviewers";
                 writer.append(fileHead);
 
                 while ((line = br.readLine()) != null) {
                     String[] courseInfo = line.split(cvsSplitBy);
                     String name = courseInfo[0].replaceAll(",", "").replaceAll("\"", "").trim();
-                    if(courseInfo.length == 9 && !name.isEmpty() && !courseInfo[2].equals("id") && !names.contains(name)) {
+                    if(courseInfo.length == 14 && !name.isEmpty() && !courseInfo[2].equals("id") && !names.contains(name)) {
                         StringBuilder sb = new StringBuilder();
                         writer.append("\n");
                         sb.append(name);
@@ -49,6 +49,16 @@ public class CreateNeo4jNodes {
                         sb.append(courseInfo[7]);
                         sb.append(',');
                         sb.append(courseInfo[8]);
+                        sb.append(',');
+                        sb.append(courseInfo[9]);
+                        sb.append(',');
+                        sb.append(courseInfo[10]);
+                        sb.append(',');
+                        sb.append(courseInfo[11]);
+                        sb.append(',');
+                        sb.append(courseInfo[12]);
+                        sb.append(',');
+                        sb.append(courseInfo[13]);
                         writer.append(sb.toString());
                         writer1.append(line);
                         writer1.append("\n");

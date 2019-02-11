@@ -80,7 +80,7 @@ public class Graph {
                 Vertex v2 = arrayCourses.get(j);
                 if(!v1.descriptionEquals(v2)){
                     double similarity = cs.cosineSimilarity(v1, v2);
-                    if(similarity >= .25){
+                    if(similarity >= 0.1){
                         v1.addEdge(v2, similarity);
                         v2.addEdge(v1, similarity);
                     }

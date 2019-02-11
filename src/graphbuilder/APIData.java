@@ -27,6 +27,68 @@ public class APIData {
 		allCourses = new HashSet<Vertex>();
 	}
 
+	public APIData(Set<Vertex> v) {
+		token = "?token=auUBPUTtr7CGev0K63JjmHQAAGplzx";
+		baseUrl = "https://api.penncoursereview.com";
+		allCourses = v;
+	}
+
+	public double[] getRatings(String id) {
+		URL url;
+		try {
+			url = new URL(baseUrl + "/courses/" + id + "/reviews/" + token);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("GET");
+			con.setRequestProperty("Accept", "application/json");
+			BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
+			String output;
+			StringBuilder sb = new StringBuilder();
+			while ((output = br.readLine()) != null) {
+				sb.append(output);
+			}
+			JSONParser parser = new JSONParser();
+			JSONObject json = (JSONObject) parser.parse(sb.toString());
+			JSONObject result = (JSONObject) json.get("result");
+			JSONArray values = (JSONArray) result.get("values");
+
+			JSONParser parser1 = new JSONParser();
+			JSONObject json1 = (JSONObject) parser1.parse(values.get(0).toString());
+			Long num_rev = (Long) json1.get("num_reviewers");
+			JSONObject ratings = (JSONObject) json1.get("ratings");
+			String al = (String) ratings.get("rAmountLearned");
+			String cq = (String) ratings.get("rCourseQuality");
+			String dif = (String) ratings.get("rDifficulty");
+			String iq = (String) ratings.get("rInstructorQuality");
+			String maj = (String) ratings.get("rRecommendMajor");
+			String nonMaj = (String) ratings.get("rRecommendNonMajor");
+			String wr = (String) ratings.get("rWorkRequired");
+
+			double[] arr = new double[8];
+			arr[0] = num_rev == null ? -1.0 : Double.parseDouble(num_rev.toString());
+			arr[1] = al == null ? -1.0 : Double.parseDouble(al);
+			arr[2] = cq == null ? -1.0 : Double.parseDouble(cq);
+			arr[3] = dif == null ? -1.0 : Double.parseDouble(dif);
+			arr[4] = iq == null ? -1.0 : Double.parseDouble(iq);
+			arr[5] = maj == null ? -1.0 : Double.parseDouble(maj);
+			arr[6] = nonMaj == null ? -1.0 : Double.parseDouble(nonMaj);
+			arr[7] = wr == null ? -1.0 : Double.parseDouble(wr);
+			con.disconnect();
+			return arr;
+
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+//		}
+		return null;
+	}
+
 	public Set<String> getSemesters() {
 		Set<String> semesters = new HashSet<String>();
 		String[] trimesters = { "a", "b", "c" };
@@ -147,7 +209,16 @@ public class APIData {
 				vertex.addAlias(alias);
 			}
 			String description = getCourseDescription(id.toString());
-			
+			double[] ratings = getRatings(id.toString());
+			vertex.setNumReviewers((int) ratings[0]);
+			vertex.setAmountLearned(ratings[1]);
+			vertex.setCourseQuality(ratings[2]);
+			vertex.setDifficulty(ratings[3]);
+			vertex.setProfessorQuality(ratings[4]);
+			vertex.setReccomendMajor(ratings[5]);
+			vertex.setReccomendNonMajor(ratings[6]);
+			vertex.setWorkRequired(ratings[7]);
+
 			vertex.setDescription(description);
 			if (!allCourses.contains(vertex)) {
 				//System.out.println(vertex.toString());
@@ -196,7 +267,7 @@ public class APIData {
 	}
 
 	public Set<Vertex> getAllCourses(){
-	    return allCourses;
-    }
+		return allCourses;
+	}
 
 }
