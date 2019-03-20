@@ -3,7 +3,7 @@
 
  CREATE CONSTRAINT ON (c:Course) ASSERT c.name IS UNIQUE;
 
- USING PERIODIC COMMIT LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/tstat1996/penn_course_recs/master/neo4jCourses.csv' AS line CREATE (:Course {name:line.name, number:line.number, id:line.id, path:line.path, description:line.description, aliases:line.aliases, courseQuality:line.courseQuality, professorQuality:line.professorQuality, difficulty:line.difficulty})
+ USING PERIODIC COMMIT LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/tstat1996/penn_course_recs/master/neo4jCourses.csv' AS line CREATE (:Course {name:line.name, number:line.number, cid:line.id, path:line.path, description:line.description, aliases:line.aliases, courseQuality:line.courseQuality, professorQuality:line.professorQuality, difficulty:line.difficulty})
 
  USING PERIODIC COMMIT LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/tstat1996/penn_course_recs/master/neo4jEdges.csv' AS row MATCH (c1:Course {name:row.node1}) MATCH (c2:Course {name:row.node2}) MERGE (c1)-[:Edge{weight:row.weight}]->(c2)
 
