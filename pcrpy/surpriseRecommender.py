@@ -1,8 +1,8 @@
 import csv
 from surprise import Dataset
 from surprise import Reader
-from recs import students
-from recs import courses
+from pcrpy.recs import students
+from pcrpy.recs import courses
 
 from collections import defaultdict
 
