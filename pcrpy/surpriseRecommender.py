@@ -115,11 +115,12 @@ r.run_rec_alg()
 
 check = [i.strip().split("\t") for i in open('./recommendations.csv').readlines()]
 
-for stu in check:
-    print("for student " + stu[0] + " we recommend:")
-    for c in stu[1:]:
-        for course in courses:
-            if c == course.get_id():
-                print(str(course.get_aliases()) + " " + course.get_name())
-    print()
+
+# for stu in check:
+#     print("for student " + stu[0] + " we recommend:")
+#     for c in stu[1:]:
+#         for course in courses:
+#             if c == course.get_id():
+#                 print(str(course.get_aliases()) + " " + course.get_name())
+#     print()
 
