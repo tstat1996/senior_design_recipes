@@ -1,0 +1,53 @@
+.desc {
+  overflow: scroll;
+  position: absolute;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+.info {
+  font-size: 12pt;
+}
+
+label {
+  padding-right: 8px;
+}
+
+.name {
+  width: 200px;
+}
+
+.row {
+  font-size: 14pt;
+  padding-top: 8px;
+}
+
+select {
+  font-size: 12pt;
+  height: 20px;
+}
+
+.table {
+  font-size: 12pt;
+  margin-top: 50px;
+}
+
+.textField {
+  font-size: 12pt;
+  color: #fff;
+  height: 20px;
+  width: 200px;
+}
+
+th {
+  height: 50px;
+}
+
+td {
+  border: 2px solid #3c619e;
+  border-collapse: separate;
+  height: 150px;
+  padding: 20px 0px;
+  text-align: center;
+  width: 120px;
+}
