@@ -26,6 +26,12 @@ public class Controller {
         return String.format(template, name);
     }
 
+    @RequestMapping("/svd")
+    public List<Recommendation> svd(@RequestParam(value="ratings", defaultValue = "") String ratings) {
+        // TODO: add method from python access class to pass in data / receive data?
+        return new ArrayList<>();
+    }
+
     @RequestMapping("/request")
     @CrossOrigin(origins = "http://localhost:3000")
     public List<Recommendation> request(@RequestParam(value="courses", defaultValue = "") String courses,
