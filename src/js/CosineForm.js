@@ -7,7 +7,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
-import '../css/Form.css';
+import '../css/CosineForm.css';
 
 const styles = theme => ({
   button: {
@@ -26,7 +26,7 @@ const styles = theme => ({
   },
 });
 
-class Form extends Component {
+class CosineForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -245,4 +245,4 @@ class Form extends Component {
   }
 }
 
-export default withStyles(styles)(Form);
+export default withStyles(styles)(CosineForm);
