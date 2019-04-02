@@ -13,7 +13,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -27,9 +29,24 @@ public class Controller {
     }
 
     @RequestMapping("/svd")
-    public List<Recommendation> svd(@RequestParam(value="ratings", defaultValue = "") String ratings) {
-        // TODO: add method from python access class to pass in data / receive data?
-        return new ArrayList<>();
+    @CrossOrigin(origins = "http://localhost:3000")
+    public List<Recommendation> svd(@RequestParam(value="course1", defaultValue = "") String course1,
+                                    @RequestParam(value="course2", defaultValue = "") String course2,
+                                    @RequestParam(value="course3", defaultValue = "") String course3,
+                                    @RequestParam(value="course4", defaultValue = "") String course4,
+                                    @RequestParam(value="course5", defaultValue = "") String course5,
+                                    @RequestParam(value="rating1", defaultValue = "") String rating1,
+                                    @RequestParam(value="rating2", defaultValue = "") String rating2,
+                                    @RequestParam(value="rating3", defaultValue = "") String rating3,
+                                    @RequestParam(value="rating4", defaultValue = "") String rating4,
+                                    @RequestParam(value="rating5", defaultValue = "") String rating5) {
+        Map<String, String> ratings = new HashMap<String, String>();
+        ratings.put(course1, rating1);
+        ratings.put(course2, rating2);
+        ratings.put(course3, rating3);
+        ratings.put(course4, rating4);
+        ratings.put(course5, rating5);
+        return PythonAccess.getRecs(ratings);
     }
 
     @RequestMapping("/request")

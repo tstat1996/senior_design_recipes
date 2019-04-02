@@ -13,13 +13,25 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class PythonAccess {
-    // TODO: make into a method that Controller calls rather than main method
-    public static void main(String[] args) {
+    public static List<Recommendation> getRecs(Map<String, String> ratings) {
         try {
-            // TODO: add ability to send data / recieve data - ask andre to fix python side?
-            URL url = new URL("http://127.0.0.1:5002/getrecs");
+            String urlString = "http://127.0.0.1:5002/getrecs?";
+            int ind = 1;
+            for (String key : ratings.keySet()) {
+                urlString += "course" + ind + "=" + key + "&rating" + ind + "=" + ratings.get(key);
+                if (ind < 5) {
+                    ind++;
+                    urlString += "&";
+                } else {
+                    break;
+                }
+            }
+            URL url = new URL(urlString);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
@@ -33,18 +45,22 @@ public class PythonAccess {
             String output = null;
             String x = null;
             while ((output = br.readLine()) != null) {
-                System.out.println(output);
                 x = output;
             }
             conn.disconnect();
 
+            List<Recommendation> recs = new ArrayList<>();
+
             JSONParser parse = new JSONParser();
-            System.out.println(parse.parse(x));
-
-            // TODO: fix parsing JSON? for some reason it cannot parse into a json object???
-            JSONObject jobj = (JSONObject)parse.parse(x);
-
-            System.out.println(jobj.toJSONString());
+            String parsed = parse.parse(x).toString();
+            JSONObject obj = (JSONObject) parse.parse(parsed);
+            JSONArray array = (JSONArray) obj.get("0");
+            for (Object o : array) {
+                String[] strs = o.toString().split(" ");
+                Recommendation rec = new Recommendation(strs[1], strs[0], 3.5, 3.4, 3.7, "cool class");
+                recs.add(rec);
+            }
+            return recs;
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (ProtocolException e) {
@@ -54,5 +70,6 @@ public class PythonAccess {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        return new ArrayList<Recommendation>();
     }
 }
