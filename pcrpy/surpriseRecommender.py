@@ -1,8 +1,7 @@
 import csv
 from surprise import Dataset
 from surprise import Reader
-from recs import students
-from recs import courses
+from recs import *
 
 from collections import defaultdict
 
@@ -26,7 +25,7 @@ class Recommender(object):
         self.type = type
         self.file = self.get_file_type()
         # make sure to update this once we get a set number of students
-        self.newStudID = 1
+        self.newStudID = len(students)
 
     def get_file_type(self):
         file = ""
@@ -46,15 +45,21 @@ class Recommender(object):
             file = "recToNonMaj.csv"
         return file
 
+    def add_student_ratings(self, map):
+        s = Student(self.newStudID, map)
+        s.match_ratings_to_courses(idAliasMap)
+        students.append(s)
+        write_rec_files_from_users(students)
+
     def write_recs(self, top_n):
         # Print the recommended items for each user
-        with open('recommendations.csv', 'w', newline='') as csvfile:
+        with open('student_rec.csv', 'w', newline='') as csvfile:
             wrtr = csv.writer(csvfile, delimiter='\t')
             for uid, user_ratings in top_n.items():
-                # if int(uid) == self.newStudID:
-                arr = [iid for (iid, _) in user_ratings]
-                arr.insert(0, uid)
-                wrtr.writerow(arr)
+                if int(uid) == self.newStudID:
+                    arr = [iid for (iid, _) in user_ratings]
+                    arr.insert(0, uid)
+                    wrtr.writerow(arr)
 
     def run_rec_alg(self):
         # path to dataset file
@@ -111,9 +116,13 @@ class Recommender(object):
 
 r = Recommender(10, RecType.COURSE_QUALITY)
 
+# map = {'CIS-160': ['1','2','3','5','4','2', '2'],'CIS-110': ['1','2','3','5','4','2', '2'],'CIS-120': ['1','2','3','5','4','2', '2'],'CIS-240': ['1','2','3','5','4','2', '2'],'CIS-350': ['1','2','3','5','4','2', '2'] }
+
+# r.add_student_ratings(map)
+
 r.run_rec_alg()
 
-check = [i.strip().split("\t") for i in open('./recommendations.csv').readlines()]
+# check = [i.strip().split("\t") for i in open('./rec_builder.csv').readlines()]
 
 
 # for stu in check:

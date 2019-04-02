@@ -23,8 +23,18 @@ class student_recs(Resource):
         rating3 = args['rating3']
         rating4 = args['rating4']
         rating5 = args['rating5']
-        r = Recommender(10, RecType.COURSE_QUALITY).run_rec_alg()
-        check = [i.strip().split("\t") for i in open('./recommendations.csv').readlines()]
+
+        ratingMap = { str(course1): [str(rating1), "5", "5", "5", "5", "5", "5"],
+                      str(course2): [str(rating2), "5", "5", "5", "5", "5", "5"],
+                      str(course3): [str(rating3), "5", "5", "5", "5", "5", "5"],
+                      str(course4): [str(rating4), "5", "5", "5", "5", "5", "5"],
+                      str(course5): [str(rating5), "5", "5", "5", "5", "5", "5"]
+                      }
+
+        r = Recommender(10, RecType.COURSE_QUALITY)
+        r.add_student_ratings(ratingMap)
+        r.run_rec_alg()
+        check = [i.strip().split("\t") for i in open('./student_rec.csv').readlines()]
         x = {}
         for stu in check:
             y = list()
