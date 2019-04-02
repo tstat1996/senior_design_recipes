@@ -54,7 +54,8 @@ public class PythonAccess {
             JSONParser parse = new JSONParser();
             String parsed = parse.parse(x).toString();
             JSONObject obj = (JSONObject) parse.parse(parsed);
-            JSONArray array = (JSONArray) obj.get("0");
+            String student = obj.keySet().iterator().next().toString();
+            JSONArray array = (JSONArray) obj.get(student);
             for (Object o : array) {
                 String[] strs = o.toString().split(" ");
                 Recommendation rec = new Recommendation(strs[1], strs[0], 3.5, 3.4, 3.7, "cool class");
@@ -68,6 +69,8 @@ public class PythonAccess {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
         return new ArrayList<Recommendation>();
