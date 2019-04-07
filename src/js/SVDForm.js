@@ -107,6 +107,7 @@ class SVDForm extends Component {
     const { course1, course2, course3, course4, course5, rating1, rating2, rating3, rating4, rating5 } = this.state;
     const courses = course1 + ' ' + rating1 + ' ' + course2 + ' ' + rating2 + ' ' + course3 + ' ' + rating3 + ' ' + course4 + ' ' + rating4 + ' ' + course5 + ' ' + rating5;
     console.log(courses);
+//    const url = `http://ec2-54-224-19-208.compute-1.amazonaws.com:8080/svd/?course1=${course1}&rating1=${rating1}&course2=${course2}&rating2=${rating2}&course3=${course3}&rating3=${rating3}&course4=${course4}&rating4=${rating4}&course5=${course5}&rating5=${rating5}`;
     const url = `http://localhost:8080/svd/?course1=${course1}&rating1=${rating1}&course2=${course2}&rating2=${rating2}&course3=${course3}&rating3=${rating3}&course4=${course4}&rating4=${rating4}&course5=${course5}&rating5=${rating5}`;
     const response = await fetch(url);
       response.json()

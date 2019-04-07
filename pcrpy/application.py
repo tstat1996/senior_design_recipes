@@ -3,11 +3,13 @@ from flask_restful import Resource, Api
 import json
 from surpriseRecommender import Recommender
 from surpriseRecommender import RecType
+from pymongo import MongoClient
+client = MongoClient('mongodb://pcr_group:pcr123@ds137862.mlab.com:37862/pcr')
 from recs import courses
 
 
-app = Flask(__name__)
-api = Api(app)
+application = Flask(__name__)
+api = Api(application)
 
 ## TODO: add ability to take in user input and send back recs
 class student_recs(Resource):
@@ -30,23 +32,32 @@ class student_recs(Resource):
                       str(course4): [str(rating4), "5", "5", "5", "5", "5", "5"],
                       str(course5): [str(rating5), "5", "5", "5", "5", "5", "5"]
                       }
-
-        r = Recommender(10, RecType.COURSE_QUALITY)
+        numRecs = 10
+        r = Recommender(numRecs, RecType.COURSE_QUALITY)
         r.add_student_ratings(ratingMap)
         r.run_rec_alg()
-        check = [i.strip().split("\t") for i in open('./student_rec.csv').readlines()]
-        x = {}
-        for stu in check:
+        recs = client.pcr.recommendations
+        sr = recs.find()
+        z = {}
+        for x in sr:
             y = list()
-            for c in stu[1:]:
-                for course in courses:
-                    if c == course.get_id():
-                        y.append(str(course.get_aliases()) + " " + course.get_name())
-            x[stu[0]] = y
-        return json.dumps(x)
+            if float(x['sid']) == float(r.newStudID):
+                cu = []
+                for i in range(numRecs):
+                    key = 'course' + str(i + 1)
+                    cu.append(x[key])
+                for c in cu:
+                    for course in courses:
+                        if float(c) == float(course.get_id()):
+                            y.append(str(course.get_aliases()) + " " + str(course.get_name()) + " " + str(course.get_course_quality())
+                                     + " " + str(course.get_difficulty()) + " " + str(course.get_instructor_quality())
+                                     + " " + str(course.get_desc()))
+                z[x['sid']] = y
+        return json.dumps(z)
 
 
 api.add_resource(student_recs, '/getrecs') # Route_1
 
 if __name__ == '__main__':
-    app.run(port='5002')
+    # application.run()
+    application.run(port=5002)

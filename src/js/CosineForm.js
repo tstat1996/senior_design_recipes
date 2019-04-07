@@ -82,6 +82,7 @@ class CosineForm extends Component {
   async handleSubmit(event) {
     event.preventDefault();
     const { courses, courseHistory, interests, difficulty, courseQuality, profQuality } = this.state;
+//    const url = `http://ec2-54-224-19-208.compute-1.amazonaws.com:8080/request/?courses=${courses}&courseHistory=${courseHistory}&interests=${interests}&diff=${difficulty}&courseQual=${courseQuality}&profQual=${profQuality}`;
     const url = `http://localhost:8080/request/?courses=${courses}&courseHistory=${courseHistory}&interests=${interests}&diff=${difficulty}&courseQual=${courseQuality}&profQual=${profQuality}`;
     const response = await fetch(url);
       response.json()

@@ -19,6 +19,7 @@ import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://reactpcr.s3-website-us-east-1.amazonaws.com")
 public class Controller {
 
     private static final String template = "Hello, %s!";
@@ -30,6 +31,7 @@ public class Controller {
 
     @RequestMapping("/svd")
     @CrossOrigin(origins = "http://localhost:3000")
+//    @CrossOrigin(origins = "http://reactpcr.s3-website-us-east-1.amazonaws.com")
     public List<Recommendation> svd(@RequestParam(value="course1", defaultValue = "") String course1,
                                     @RequestParam(value="course2", defaultValue = "") String course2,
                                     @RequestParam(value="course3", defaultValue = "") String course3,
@@ -51,6 +53,7 @@ public class Controller {
 
     @RequestMapping("/request")
     @CrossOrigin(origins = "http://localhost:3000")
+//    @CrossOrigin(origins = "http://reactpcr.s3-website-us-east-1.amazonaws.com")
     public List<Recommendation> request(@RequestParam(value="courses", defaultValue = "") String courses,
                                         @RequestParam(value="courseHistory", defaultValue = "") String courseHistory,
                                         @RequestParam(value="interests", defaultValue = "") String interests,
@@ -58,6 +61,7 @@ public class Controller {
                                         @RequestParam(value = "courseQual", defaultValue = "4") String courseQual,
                                         @RequestParam(value = "profQual", defaultValue = "4") String profQual) {
         List<Recommendation> recs = new ArrayList<Recommendation>();
+//        try ( GraphAccess graph = new GraphAccess( "bolt://ec2-3-85-56-184.compute-1.amazonaws.com:7687", "neo4j", "i-00f51148311d735ce" ) )
         try ( GraphAccess graph = new GraphAccess( "bolt://localhost:7687", "sam", "sam" ) )
         {
             String response = graph.access( courses, interests, diff, courseQual, profQual);

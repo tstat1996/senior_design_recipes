@@ -1,7 +1,9 @@
 import csv
 from surprise import Dataset
 from surprise import Reader
-from recs import *
+from recs import Student, idAliasMap, write_rec_files_from_stud
+from pymongo import MongoClient
+client = MongoClient('mongodb://pcr_group:pcr123@ds137862.mlab.com:37862/pcr')
 
 from collections import defaultdict
 
@@ -24,8 +26,7 @@ class Recommender(object):
         self.numRecs = numRecs
         self.type = type
         self.file = self.get_file_type()
-        # make sure to update this once we get a set number of students
-        self.newStudID = len(students)
+        self.newStudID = client.pcr.students.count() + 1
 
     def get_file_type(self):
         file = ""
@@ -48,18 +49,33 @@ class Recommender(object):
     def add_student_ratings(self, map):
         s = Student(self.newStudID, map)
         s.match_ratings_to_courses(idAliasMap)
-        students.append(s)
-        write_rec_files_from_users(students)
+        st = client.pcr.students
+        s_data = {
+            'sid': self.newStudID,
+        }
+        st.insert_one(s_data)
+        write_rec_files_from_stud(s)
+        with open(self.file, 'w', newline='') as csvfile:
+            wrtr = csv.writer(csvfile, delimiter='\t',
+                              quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            for x in client.pcr.courseRating.find():
+                li = [x['user'], x['course'], x['rating']]
+                wrtr.writerow(li)
 
     def write_recs(self, top_n):
-        # Print the recommended items for each user
-        with open('student_rec.csv', 'w', newline='') as csvfile:
-            wrtr = csv.writer(csvfile, delimiter='\t')
-            for uid, user_ratings in top_n.items():
-                if int(uid) == self.newStudID:
-                    arr = [iid for (iid, _) in user_ratings]
-                    arr.insert(0, uid)
-                    wrtr.writerow(arr)
+        client.pcr.recommendations.drop()
+        recs = client.pcr.recommendations
+        for uid, user_ratings in top_n.items():
+            arr = [iid for (iid, _) in user_ratings]
+            arr.insert(0, uid)
+            s_data = {
+                'sid': arr[0],
+            }
+            for el in arr[1:]:
+                key = 'course' + str(arr.index(el))
+                s_data[key] = el
+            recs.insert_one(s_data)
+
 
     def run_rec_alg(self):
         # path to dataset file
@@ -71,21 +87,13 @@ class Recommender(object):
 
         # We can now use this dataset as we please, e.g. calling cross_validate
         # cross_validate(BaselineOnly(), data, verbose=True)
-        print('building trainset')
         trainset = data.build_full_trainset()
-        print('algo')
         algo = SVD()
-        print('fitting algo')
         algo.fit(trainset)
-
-        print('building testset')
         testset = trainset.build_anti_testset()
-        print('making predictions')
         predictions = algo.test(testset)
-        print('top 10')
         top_n = self.get_top_n(predictions, n=self.numRecs)
         self.write_recs(top_n)
-        print('done')
 
     def get_top_n(self, predictions, n=10):
         '''Return the top-N recommendation for each user from a set of predictions.
@@ -112,24 +120,4 @@ class Recommender(object):
             top_n[uid] = user_ratings[:n]
 
         return top_n
-
-
-r = Recommender(10, RecType.COURSE_QUALITY)
-
-# map = {'CIS-160': ['1','2','3','5','4','2', '2'],'CIS-110': ['1','2','3','5','4','2', '2'],'CIS-120': ['1','2','3','5','4','2', '2'],'CIS-240': ['1','2','3','5','4','2', '2'],'CIS-350': ['1','2','3','5','4','2', '2'] }
-
-# r.add_student_ratings(map)
-
-r.run_rec_alg()
-
-# check = [i.strip().split("\t") for i in open('./rec_builder.csv').readlines()]
-
-
-# for stu in check:
-#     print("for student " + stu[0] + " we recommend:")
-#     for c in stu[1:]:
-#         for course in courses:
-#             if c == course.get_id():
-#                 print(str(course.get_aliases()) + " " + course.get_name())
-#     print()
 

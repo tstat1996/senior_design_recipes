@@ -3,11 +3,7 @@ package app;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.python.core.PyInteger;
-import org.python.core.PyObject;
-import org.python.util.PythonInterpreter;
 
-import javax.script.*;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -20,6 +16,7 @@ import java.util.Map;
 public class PythonAccess {
     public static List<Recommendation> getRecs(Map<String, String> ratings) {
         try {
+//            String urlString = "https://pcpry-api.herokuapp.com/getrecs?";
             String urlString = "http://127.0.0.1:5002/getrecs?";
             int ind = 1;
             for (String key : ratings.keySet()) {
