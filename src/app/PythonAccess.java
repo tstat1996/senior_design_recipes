@@ -54,8 +54,14 @@ public class PythonAccess {
             String student = obj.keySet().iterator().next().toString();
             JSONArray array = (JSONArray) obj.get(student);
             for (Object o : array) {
-                String[] strs = o.toString().split(" ");
-                Recommendation rec = new Recommendation(strs[1], strs[0], 3.5, 3.4, 3.7, "cool class");
+                JSONObject recObj = (JSONObject) parse.parse(o.toString());
+                String code = recObj.get("code").toString();
+                String name = recObj.get("name").toString();
+                Double courseQuality = Double.parseDouble(recObj.get("courseQuality").toString());
+                Double difficulty = Double.parseDouble(recObj.get("difficulty").toString());
+                Double instructorQuality = Double.parseDouble(recObj.get("instructorQuality").toString());
+                String description = recObj.get("description").toString();
+                Recommendation rec = new Recommendation(code, name, courseQuality, difficulty, instructorQuality, description);
                 recs.add(rec);
             }
             return recs;
